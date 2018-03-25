@@ -5,7 +5,9 @@ var io = require('socket.io')(http);
 const bp = require('body-parser');
 const path = require('path');
 
-let Students = require('./Students')
+// 在这里引入自己接口的文件
+let example = require('./example')
+let Marco = require('./Macro.js')
 
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -23,7 +25,10 @@ app.use(bp.urlencoded({extended:false}));
 app.use(express.static(path.join(path.resolve(__dirname,'../'),'/')));
 module.exports={
     start(_port){
-        Students.reg(app);
+        // 在这里引用接口文件中的方法
+        example.reg(app);
+        Marco.reg(app);
+        
         http.listen(_port || 1010);
     }
 }

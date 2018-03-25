@@ -3,7 +3,7 @@ var apiResult = require('../utils/apiResult');
 
 module.exports={
     reg(app){
-        app.get('/category',(req,res)=>{
+        app.get('/Mcategory',(req,res)=>{
             let page = req.query.page;
             let qty = req.query.qty;
             let startNo = (page-1)*qty;
