@@ -5,6 +5,7 @@ import HomeComponnet from '../components/home/HomeComponent.js'
 import ListComponnet from '../components/list/ListComponnet.js'
 import DetailComponnet from '../components/detail/DetailComponnet.js'
 import LoginComponnet from '../components/login/LoginComponent.js'
+import MessageComponnet from '../components/message/MessageComponnet.js'
 
 
 import Video_Componnet from '../components/VideoList/Video_Componnet.js'
@@ -18,6 +19,7 @@ export default (
         <Route path="/list" component = {ListComponnet} />
         <Route path="/detail" component = {DetailComponnet} />
         <Route path="/login" component = {LoginComponnet} />
+        <Route path="/message" component = {MessageComponnet} />
         <Route path="/Video" component = {Video_Componnet} />
         <Route path="/Video_detail/:id" component = {Video_datailComponnet} />
     </Route>

@@ -1,6 +1,6 @@
 import request from "superagent"
 
-let baseUrl = "http://10.3.136.179:1010/";
+let baseUrl = "http://10.3.136.57:1010/";
 
 function filterUrl(url){
     return url.startsWith('http') ? url : baseUrl+url;
@@ -27,8 +27,6 @@ export default{
             .post(filterUrl(url))
             .send(params || {})
             .type('form')
-            .set('X-API-Key', 'foobar')
-            .set('accept', 'json')
             .end((err, res) => {
                 if(err){
                     reject(err);
