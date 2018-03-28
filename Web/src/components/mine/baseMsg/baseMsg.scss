@@ -1,0 +1,33 @@
+#baseMsg{
+    position: absolute;left: 0;top: 0;bottom: 0;right: 0;background: #eee;font-size:0.466667rem;
+    i{font-style:normal;}
+    .header{
+        display:flex;color:#f60;background: #fff;border-bottom:1px solid #999;margin-bottom: 0.266667rem;
+        i{width: 10%;font-size:0.8rem;}
+        h4{width: 70%;color:#000;font-weight: normal;}
+        span{width: 20%;}
+        .h0{display:flex;justify-content:center;align-items:center;}
+    }
+    .mainMsg{
+        ul li{
+            overflow: hidden;background: #fff;border-bottom: 1px solid #999;padding: 0.333333rem;color:#333;
+            i.fa{color:#999;font-size:1.5em;}
+            input{width: 6.0rem;height: 0.613333rem;border:0 none;font-size:0.44rem;text-align: right;}
+            input[type='radio']{width: 0.4rem;height: 0.4rem;}
+            &.head{
+                span.fl{line-height: 110px;}
+                i.Ihead{width: 1.466667rem;height: 1.466667rem;border-radius:50%;overflow: hidden;margin-right: 0.266667rem;vertical-align: middle;}
+                i.fa-angle-right{line-height: 110px;vertical-align: middle;}
+            }
+            &.region{
+                .fr{
+                    input{margin-top: -0.066667rem;}
+                    i.fa-angle-right{margin-left: 0.133333rem;}
+                }
+            }
+            &.sex{margin-bottom: 0.266667rem;}
+            &.eduState{margin-bottom: 0.333333rem;}
+
+        }
+    }
+}

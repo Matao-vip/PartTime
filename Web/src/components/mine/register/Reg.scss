@@ -1,0 +1,33 @@
+#Mreg{
+    position: absolute;left: 0;top: 0;right: 0;bottom: 0;background: #eee;font-size:33px;
+    .header{
+        height:1.173333rem;font-size:40px;background: #fff;
+        .fa-mail-reply{color:#f60;display: block;
+        width: 15%;height: 1.066667rem;line-height: 1.066667rem;text-align: center;float: left;}
+        h4{font-weight: normal;float:left;height: 1.066667rem;line-height: 1.066667rem;width:75%;text-align: center;}
+    }
+    .body{
+        ul.list-block{
+            margin: 0.4rem 0;background: #fff;
+            li{
+                height: 1.173333rem;border-bottom:1px solid #ccc;font-size:33px;color:#666;padding: 0.213333rem 0.4rem;
+                label{display: block;width: 2.293333rem;float:left;height: 0.733333rem;line-height: 0.733333rem;}
+                input{display: block;border:0 none;height: 0.733333rem;float:left;width:4.0rem;font-size:33px;}
+                span{display: block;float:right;line-height: 0.733333rem;padding-left: 0.266667rem;border-left:1px solid #ccc;}
+            }
+        }
+        .inviteCode{
+            height: 1.173333rem;border-bottom:1px solid #ccc;font-size:33px;color:#666;padding: 0.213333rem 0.4rem;background: #FFF;margin-bottom: 0.4rem;
+            label{display: block;width: 2.293333rem;float:left;height: 0.733333rem;line-height: 0.733333rem;}
+            input{display: block;border:0 none;height: 0.733333rem;float:left;width:5.0rem;font-size:33px;}
+        }
+        .agree{
+            padding-left: 0.4rem;height: 0.8rem;line-height: 0.8rem;font-size:30px;
+            input{width: 0.453333rem;height: 0.453333rem;margin-right: 0.266667rem;margin-top: -0.106667rem;}
+            a{color:#f60;}
+        }
+        .submit{display: block;margin: 0.533333rem;font-size:36px;text-align: center
+        ;line-height: 1.173333rem;width: 8.986667rem;color:#fff;background: #f60;border:0 none;border-radius:0.133333rem;}
+    }
+    span.hint{padding:0.266667rem;background: #333;border-radius:0.8rem;color:#fff;opacity:.8;display: none;}
+}

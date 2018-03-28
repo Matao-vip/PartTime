@@ -1,24 +1,24 @@
-import http from '../utils/httpclient'
+import http from '../utils/httpClient'
+import * as constants from '../components/datagrid/datagridconstants.js'
 
 export default function(api){
     return function(dispatch){
-        //dispatch
         return function(action){
-            let {type, url, data, method = 'get'} = action;
-            // console.log(JSON.stringify(action));
+            let {type,types,url,data,method='get',name}=action;
             if(!url){
-                //手动调用 reducer
-               return dispatch(action)
+                return dispatch(action);
             }
+            dispatch({type:constants.Requesting})
 
-            dispatch({type: 'requesting'})
-            
-            http[method](url, data).then((res) => {
-                let _action = {
-                    type: 'requested',
-                    result: res.data
+            http[method](url,data).then(res=>{
+                let _action={
+                    type,
+                    name,
+                    result:res
                 }
                 dispatch(_action)
+            }).catch(err=>{
+                dispatch({type:constants.RequestError})
             })
         }
     }
