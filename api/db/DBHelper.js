@@ -6,7 +6,7 @@ var pool = mysql.createPool({
     user : 'root',
     password : '',
     port:3306,
-    database: 'jzm',
+    database: 'react_test_db',
     multipleStatements:true,  // 允许执行多个SQL语句
     timezone:"00:00" // 设置时间格式
 });

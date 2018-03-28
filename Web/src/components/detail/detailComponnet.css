@@ -5,15 +5,31 @@
 body,html{
     height: 100%;
 }
+#qDetailBox .spinner{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: #fe822f;
+    font-size: 0.666667rem;
+    line-height: 100%;
+}
+#qDetailBox .back-detail{
+    display:block;
+    width: 1.066667rem;
+    height: 1.066667rem;
+}
 #qDetailBox{
     display: flex;
     flex-direction: column;
     height: 100%;
     background: #DDD;
+    position: relative;
 }
 #qDetailBox .qheader{
-    display: flex;
-    height: 2.066667rem;
+    /*display: flex;*/
+    height: 1.066667rem;
     border-bottom: 1px solid #ccc;
     background: #fff;
 }
@@ -42,7 +58,7 @@ body,html{
     line-height: 1.066667rem;
 }
 #qDetailBox .qmain{
-    flex-grow: 1;
+    flex: 1;
     overflow: auto;
 }
 #qDetailBox .qmain .qjz-lit-bot{
@@ -157,4 +173,59 @@ body,html{
 #qDetailBox .qmain .qjz-nr p{
     font-size: 0.2rem;
     color: #999;
+}
+#qDetailBox .qmain .qjz-like ul li{
+    background: #fff;
+}
+#qDetailBox .qmain .qjz-like ul li .qlist{
+    padding: 0 .6rem 0 1.76rem;
+    border-bottom: 1px solid #f8f7f7;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+#qDetailBox .qmain .qjz-like ul li .qlist i{
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    border-radius: 50%;
+    background: #000;
+    top: 50%;
+    transform:translateY(-50%);
+    left: 0.266667rem; 
+    font-size: 0.466667rem;
+    font-style: normal;
+    background: #0894ec;
+}
+#qDetailBox .qmain .qjz-like ul li .qlist .qlist_name{
+    font-size: 0.266667rem;
+    margin-top: 0.266667rem;
+    color: #000;
+}   
+#qDetailBox .qmain .qjz-like ul li .qlist .qlist_time{
+    font-size: 0.16rem;
+    margin: 0.133333rem 0;
+}   
+#qDetailBox .qmain .qjz-like ul li .qlist .qmain_li_bot{
+    font-size: 0.266667rem;
+    margin-bottom: 0.266667rem;
+    color: #fe7418;
+}
+#qDetailBox .qmain .qjz-like h6{
+    padding-left: .5rem;
+    border-left: 3px solid #fe7418;
+    font-weight: 400;
+    font-size: 0.253333rem;
+    color: #fe7418;
+    background: #fff;
+}
+#qDetailBox .qmain .qjz-bot{
+    text-align: center;
+    font-size: 0.44rem;
+    line-height: 1.333333rem;
+    height: 1.333333rem;
 }

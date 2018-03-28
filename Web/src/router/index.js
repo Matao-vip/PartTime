@@ -17,7 +17,7 @@ export default (
     <Route history = {hashHistory}>
         <Route path="/" component = {HomeComponnet}/>
         <Route path="/list" component = {ListComponnet} />
-        <Route path="/detail" component = {DetailComponnet} />
+        <Route path="/detail/:id" component = {DetailComponnet} />
         <Route path="/login" component = {LoginComponnet} />
         <Route path="/message" component = {MessageComponnet} />
         <Route path="/Video" component = {Video_Componnet} />
