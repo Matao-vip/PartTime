@@ -34,6 +34,7 @@ class LoginComponent extends Component{
                 this.setState({showSpinner:false});
                 if(res.status){
                     window.sessionStorage.setItem('xxtoken',res.data.token);
+                    window.sessionStorage.setItem('userID',res.data.id);
                     $('#hint').show().html('登录成功！')
                     var count = 2;
                     var timer=setInterval(()=>{
@@ -43,7 +44,7 @@ class LoginComponent extends Component{
                             clearInterval(timer);
                             this.props.router.push(`/mine/${res.data.id}`);
                         }
-                    },1000)
+                    },600)
                 }else{
                     $('#hint').show().html('帐号或密码错误!')
                     this.disapperHint();

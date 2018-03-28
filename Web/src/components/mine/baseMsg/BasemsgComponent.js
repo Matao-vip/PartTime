@@ -4,21 +4,72 @@ import $ from 'jquery'
 import './baseMsg.scss'
 import http from '../../../utils/httpClient'
 import Spinner from '../../spinner/SpinnerComponent'
+import ChangeImgComponent from '../changeImg/ChangeImgComponent'
 
 export default class BasemsgComponnet extends Component{
     state={
         dataset:{},
-        baseUrl:http.baseUrl
+        baseUrl:http.baseUrl,
+        showImg:false,
+        headImg:null
     }
     componentWillMount(){
         let id = this.props.params.id;
         if(id){
-            let msg = JSON.parse(window.sessionStorage.getItem('msg'))[0];
+            let msg = JSON.parse(window.sessionStorage.getItem('MarcoMsg'))[0];
             this.setState({dataset:msg});
+            this.setState({headImg:msg.headImg})
         }
     }
+    componentDidMount(){
+        $(`input[value="${this.state.dataset.sex}"]`).prop('checked',true)
+        $(`input[value="${this.state.dataset.eduState}"]`).prop('checked',true)
+    }
     goToBack(){
+        window.sessionStorage.removeItem('MarcoMsg');
         history.go(-1);
+    }
+    changeMsg(){
+        var $mainMsg=$('#baseMsg .mainMsg');
+        var sex,eduState;
+        // 性别单选框取值
+        $mainMsg.find('.sex input[name="sex"]').each((idx,item)=>{
+            if(item.checked){
+                sex=item.value;
+            }
+        })
+        // 教育状态单选框取值
+        $mainMsg.find('.eduState input[name="eduState"]').each((idx,item)=>{
+            if(item.checked){
+                eduState=item.value;
+            }
+        })
+        var newMsg={
+            id:this.props.params.id,
+            username:$mainMsg.find('.tel input').val(),
+            nickname:$mainMsg.find('.nickname input').val(),
+            sex,
+            birth:$mainMsg.find('.birth input').val(),
+            height:$mainMsg.find('.height input').val()*1,
+            region:$mainMsg.find('.region input').val(),
+            eduState,
+            email:$mainMsg.find('.email input').val()
+        }
+        http.post('MchangeMsg',newMsg).then(res=>{
+            if(res.status){
+                window.sessionStorage.removeItem('MarcoMsg');
+                this.props.router.push(`/mine/${this.props.params.id}`)
+            }
+        })
+    }
+    showImgComponent(){
+        this.setState({showImg:true});
+    }
+    hideImgComponent(e,data){
+        this.setState({showImg:false});
+        if(data){
+            this.setState({headImg:data})
+        }
     }
     render(){
         return(
@@ -26,14 +77,14 @@ export default class BasemsgComponnet extends Component{
                 <div className="header">
                     <i className="fa fa-angle-left h0" onClick={this.goToBack}></i>
                     <h4 className="h0">基本信息</h4>
-                    <span className="save h0">保存</span>
+                    <span className="save h0" onClick={this.changeMsg.bind(this)}>保存</span>
                 </div>
                 <div className="mainMsg">
                     <ul>
                         <li className="head">
                             <span className="fl">头像</span>
-                            <span className="fr">
-                                <i className="Ihead"><img src={this.state.baseUrl + this.state.dataset.headImg} width="110" height="110" /></i>
+                            <span className="fr" onClick={this.showImgComponent.bind(this)}>
+                                <i className="Ihead"><img src={this.state.baseUrl + this.state.headImg} width="110" height="110" /></i>
                                 <i className="fa fa-angle-right"></i>
                             </span>
                         </li>
@@ -55,10 +106,10 @@ export default class BasemsgComponnet extends Component{
                                 <i className="fa fa-angle-right"></i>
                             </span>
                         </li>
-                        <li className="age">
-                            <span className="fl">年龄</span>
+                        <li className="birth">
+                            <span className="fl">生日</span>
                             <span className="fr">
-                                <input type="number" defaultValue={this.state.dataset.age}/> 岁
+                                <input type="date" defaultValue={this.state.dataset.birth}/> 
                             </span>
                         </li>
                         <li className="height">
@@ -88,6 +139,7 @@ export default class BasemsgComponnet extends Component{
                         </li>
                     </ul>
                 </div>
+                <ChangeImgComponent showImg={this.state.showImg} hideImg={this.hideImgComponent.bind(this)} userid={this.props.params.id}/>
             </div>
         )
     }

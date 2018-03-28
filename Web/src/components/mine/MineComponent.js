@@ -17,6 +17,12 @@ class MineComponnet extends Component{
         nickname:'亲，你还没登录哦'
     }
     componentWillMount(){
+        this.refreshMsg();
+    }
+    componentDidMount(){
+        $("#Mine .footer ul li").last().addClass('active');
+    }
+    refreshMsg(){
         if(this.props.params.id){
             let config = {
                 type:'getMine',
@@ -27,16 +33,20 @@ class MineComponnet extends Component{
             this.props.MineRefresh(config);
         }
     }
-    componentDidMount(){
-        $("#Mine .footer ul li").last().addClass('active');
-    }
     toBaseMsg(e){
-        if(!this.props.params.id){
+        if(!this.props.params.id || !window.sessionStorage.getItem('xxtoken')){
             this.props.router.push('/login');
             e.preventDefault();
-        }else{
+        }else if(this.props.params.id && window.sessionStorage.getItem('xxtoken')){
             var msg=JSON.stringify(this.props.dataset.dataset);
-            window.sessionStorage.setItem('msg',msg);
+            window.sessionStorage.setItem('MarcoMsg',msg);
+        }
+    }
+    toApplyList(){
+        if(!this.props.params.id || !window.sessionStorage.getItem('xxtoken')){
+            this.props.router.push('/login');
+        }else if(this.props.params.id && window.sessionStorage.getItem('xxtoken')){
+            this.props.router.push(`/mine/applyList/${this.props.params.id}`)
         }
     }
     render(){
@@ -57,7 +67,7 @@ class MineComponnet extends Component{
                 <div className="body">
                     <div className="body1">
                         <div className="body1_head">
-                            <Link to={'/mine/baseMsg/'+this.props.params.id} className="clfix" onClick={this.toBaseMsg.bind(this)}>
+                            <Link to={'/baseMsg/'+this.props.params.id} className="clfix" onClick={this.toBaseMsg.bind(this)}>
                                 <i className="Myhead fl"><img src={this.state.baseUrl + (ds[0].headImg || this.state.headImg)} width="110" height="110"/></i>
                                 <span className="Myname fl">{ds[0].nickname || this.state.nickname}</span>
                                 <i className="fa fa-arrow-circle-right fr"></i>
@@ -80,7 +90,7 @@ class MineComponnet extends Component{
                         </div>
                         <div className="applyList">
                             <ul>
-                                <li><i className="fa fa-file-text-o"></i><span>已报名</span></li>
+                                <li onClick={this.toApplyList.bind(this)}><i className="fa fa-file-text-o"></i><span>已报名</span></li>
                                 <li><i className="fa fa-calendar-check-o"></i><span>已录用</span></li>
                                 <li><i className="fa fa-check-circle-o"></i><span>已到岗</span></li>
                                 <li><i className="fa fa-handshake-o"></i><span>已结算</span></li>

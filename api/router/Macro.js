@@ -4,6 +4,14 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const filter = require('../utils/filter');
 
+var express=require('express');
+var multer=require('multer');
+var path=require('path');
+var fs=require('fs');
+// 设置上传目录
+var uploadpath=path.join(path.resolve(__dirname,'../'),'temp');
+var upload=multer({ dest: uploadpath});
+
 module.exports={
     reg(app){
         app.get('/Mcategory',(req,res)=>{
@@ -54,12 +62,94 @@ module.exports={
             }
         })
         // 获取用户信息
-        app.get('/Mgetuser',(req,res)=>{
+        app.get('/Mgetuser',filter,(req,res)=>{
             let id = req.query.id;
             let sql = `select * from users where id=${id};`
             db.DBHelper.handle(sql,result=>{
                 res.send(apiResult(result.length>0,result));
             })
+        })
+        // 多条件筛选
+        app.get('/Mgetwork',(req,res)=>{
+            let region = req.query.region;
+            let type = req.query.type;
+            let kind = req.query.kind;
+            var sql = "select SQL_CALC_FOUND_ROWS * from worksheet where 1=1";
+            if(region){
+                sql +=` and region='${region}'`
+            }
+            if(type){
+                sql +=` and type='${type}'`
+            }
+            if(kind){
+                sql +=` and kind='${kind}'`
+            }
+            sql += "; select FOUND_ROWS() as rowsCount;";
+            db.DBHelper.handle(sql,result=>{
+                res.send(apiResult(true,result))
+            })
+        })
+        // 修改头像（文件上传）接口
+        app.post('/Muploadhead',upload.single('head'),(req,res)=>{
+            var file=req.file;
+            var id=req.body.id;
+            fs.rename(file.path,file.path+file.originalname);
+            var headImg = "temp/"+file.filename+file.originalname;
+            var sql = `update users set headImg='${headImg}' where id=${id}`
+            db.DBHelper.handle(sql,result=>{
+                res.send(apiResult(true,headImg))
+            })
+        })
+        // 修改用户基本信息
+        app.post('/MchangeMsg',(req,res)=>{
+            let newMsg = req.body;
+            var sql = `update users set username='${newMsg.username}',nickname='${newMsg.nickname}',sex='${newMsg.sex}',birth='${newMsg.birth}',height=${newMsg.height},region='${newMsg.region}',eduState='${newMsg.eduState}',email='${newMsg.email}' where id=${newMsg.id}`
+            db.DBHelper.handle(sql,result=>{
+                res.send(apiResult(true,result))
+            })
+        })
+        // 获取兼职申请数据列表
+        app.get('/MgetApply',filter,(req,res)=>{
+            let username_id = req.query.username_id;
+            var sql = `select SQL_CALC_FOUND_ROWS * from applylist`
+            if(username_id){
+                sql += ` WHERE username_id=${username_id}`;
+                sql += "; select FOUND_ROWS() as rowsCount;";
+                db.DBHelper.handle(sql,result=>{
+                    if(result.data && result.data.length>0){
+                        var sql2 = 'select SQL_CALC_FOUND_ROWS * from worksheet where 1=2'
+                        result.data.forEach(item=>{
+                            sql2 += ` or id=${item.work_id}`
+                        })
+                        sql2 += "; select FOUND_ROWS() as rowsCount;";
+                        db.DBHelper.handle(sql2,result2=>{
+                            if(result2.data){
+                                result2.data.forEach((item,idx)=>{
+                                    item['applytime'] = result.data[idx].applytime;
+                                    item['listId'] = result.data[idx].id;
+                                })
+                            }
+                            res.send(apiResult(true,result2));
+                        })
+                    }else{
+                        res.send(apiResult(false));
+                    }
+                })
+            }else{
+                res.send(apiResult(false));
+            }
+        })
+        // 删除申请数据
+        app.post('/Mdelapply',filter,(req,res)=>{
+            let id = req.body.id;
+            if(id){
+                var sql = `delete from applylist where id=${id}`
+                db.DBHelper.handle(sql,result=>{
+                    res.send(apiResult(true,result));
+                })
+            }else{
+                res.send(apiResult(false));
+            }
         })
     }
 }

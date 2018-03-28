@@ -2,7 +2,7 @@
     position: absolute;left: 0;top: 0;bottom: 0;right: 0;background: #eee;font-size:0.466667rem;
     i{font-style:normal;}
     .header{
-        display:flex;color:#f60;background: #fff;border-bottom:1px solid #999;margin-bottom: 0.266667rem;
+        display:flex;color:#f60;background: #fff;border-bottom:1px solid #999;margin-bottom: 0.266667rem;height: 1.333333rem;
         i{width: 10%;font-size:0.8rem;}
         h4{width: 70%;color:#000;font-weight: normal;}
         span{width: 20%;}
@@ -21,8 +21,7 @@
             }
             &.region{
                 .fr{
-                    input{margin-top: -0.066667rem;}
-                    i.fa-angle-right{margin-left: 0.133333rem;}
+                    i.fa-angle-right{margin-left: 0.266667rem;line-height: 0.613333rem;vertical-align: middle;}
                 }
             }
             &.sex{margin-bottom: 0.266667rem;}
