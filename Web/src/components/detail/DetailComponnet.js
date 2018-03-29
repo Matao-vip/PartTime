@@ -88,7 +88,7 @@ export default class DetailComponnet extends React.Component{
                     </div>
                     <div className="qjz-nr">
                         <h6>工作内容</h6>
-                        <p>
+                        <p className="qjz-nrp">
                             {this.state.data.workContent}
                         </p>
                     </div>
@@ -121,7 +121,7 @@ export default class DetailComponnet extends React.Component{
                         </div>
                     </div>
                     <div className="qjz-like">
-                        <h6>猜你喜欢</h6>
+                        <h6 className="qjz-likeh6">猜你喜欢</h6>
                         <ul>
                             <Link to={{pathname:`/detail/${this.state.like.id}`}}>
                                 <li id={this.state.like.id} >

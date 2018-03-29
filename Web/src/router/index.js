@@ -38,7 +38,6 @@ export default (
         <Route path="/reg" component = {RegComponnet} />
         <Route path="/login" component = {LoginComponent} />
         <Route path="/detail(/:id)" component = {DetailComponnet} />
-        <Route path="/login" component = {LoginComponnet} />
         <Route path="/message" component = {MessageComponnet} />
         <Route path="/Video" component = {Video_Componnet} />
         <Route path="/Video_detail/:id" component = {Video_datailComponnet} />

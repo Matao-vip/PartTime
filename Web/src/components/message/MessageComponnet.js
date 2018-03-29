@@ -1,5 +1,7 @@
 import React from 'react'
 import './MessageComponnet.css'
+import FooterComponent from '../foot/FootComponent'
+import $ from 'jquery'
 
 export default class MessageComponnet extends React.Component{
     shownav(event){
@@ -14,6 +16,9 @@ export default class MessageComponnet extends React.Component{
             document.getElementsByClassName('qnav_news')[0].style.display = 'none'
             document.getElementsByClassName('qnav_addlist')[0].style.display = 'block'
         }
+    }
+    componentDidMount(){
+        $("#qMessageBox .footer ul li").eq(3).addClass('active');
     }
     render(){
         return(
@@ -53,9 +58,7 @@ export default class MessageComponnet extends React.Component{
                         </div>
                     </div>
                 </div>
-                <footer className="qfooter">
-
-                </footer>
+                <FooterComponent/>
             </div>
         ) 
     }

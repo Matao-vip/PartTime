@@ -1,8 +1,10 @@
 import React from 'react'
 import './ListComponnet.css'
 import http from '../../utils/httpClient.js'
-import { Link } from 'react-router';
+import { Link } from 'react-router'
 import spinner from '../spinner/SpinnerComponent.js'
+import FooterComponent from '../foot/FootComponent'
+import $ from 'jquery'
 
 export default class ListComponnet extends React.Component{
     state = {
@@ -27,6 +29,9 @@ export default class ListComponnet extends React.Component{
             // this.state.spinner = false;
             this.changestyle()
         })
+    }
+    componentDidMount(){
+        $("#qListBox .footer ul li").eq(1).addClass('active');
     }
     showItem(event){
         var arrItem = document.getElementsByClassName('qnav_item')
@@ -75,6 +80,7 @@ export default class ListComponnet extends React.Component{
             this.setState({shade: false})
             this.setState({seleall: false})
             this.changestyle()
+            document.getElementsByClassName('qload')[0].innerHTML = ''
         })
     }
     seleType(name){
@@ -85,11 +91,12 @@ export default class ListComponnet extends React.Component{
             this.setState({shade: false});
             this.setState({seleall: false})
             this.changestyle()
+            document.getElementsByClassName('qload')[0].innerHTML = ''
         })
     }
     seleAll(){
         http.get('qList',{}).then(res=>{
-            this.setState({data: res.data.data.slice(0,this.state.loadadd)})
+            this.setState({data: res.data.data.slice(0,7)})
             this.setState({total: res.data.rowsCount})
             this.setState({showarea:false});
             this.setState({showtype:false});
@@ -97,6 +104,7 @@ export default class ListComponnet extends React.Component{
             this.setState({shade: false})
             this.setState({seleall: true})
             this.changestyle()
+            document.getElementsByClassName('qload')[0].innerHTML = ''
         })
     }
     seleAsc(){
@@ -109,6 +117,7 @@ export default class ListComponnet extends React.Component{
             this.setState({shade: false})
             this.setState({seleall: false})
             this.changestyle()
+            document.getElementsByClassName('qload')[0].innerHTML = ''
         })
     }
     seleDesc(){
@@ -121,6 +130,7 @@ export default class ListComponnet extends React.Component{
             this.setState({shade: false})
             this.setState({seleall: false})
             this.changestyle()
+            document.getElementsByClassName('qload')[0].innerHTML = ''
         })
     }
     seleNew(){
@@ -133,15 +143,17 @@ export default class ListComponnet extends React.Component{
             this.setState({shade: false})
             this.setState({seleall: false})
             this.changestyle()
+            document.getElementsByClassName('qload')[0].innerHTML = ''
         })
     }
     selePx(){
         this.setState({selepx: !this.state.selepx})
         this.changestyle()
+        document.getElementsByClassName('qload')[0].innerHTML = ''
     }
     lazyload(e){
         console.log(e.target.children[0].offsetHeight-(e.target.offsetHeight+e.target.scrollTop))
-        if((e.target.children[0].offsetHeight-(e.target.offsetHeight+e.target.scrollTop))*1 <= 1 && (this.state.seleall == true)){  
+        if((e.target.children[0].offsetHeight-(e.target.offsetHeight+e.target.scrollTop))*1 <= -14 && (this.state.seleall == true)){  
             this.refs.load.innerHTML = "加载中..."
             var timer = setTimeout(()=>{
                 this.setState({loadadd:this.state.loadadd+3})
@@ -244,9 +256,7 @@ export default class ListComponnet extends React.Component{
                         {this.state.shade ? shade :null}
                     </div>
                 </div>
-                <footer className="qfooter">
-
-                </footer>
+                <FooterComponent/>
             </div>
         )
     }

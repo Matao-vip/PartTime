@@ -45,6 +45,7 @@
     font-size: 0.56rem;
     line-height: 1.2rem;
     background: #fff;
+    margin-bottom: 0;
 }
 #qMessageBox .qmain .qnav_news .qsearch{
     position: relative;
@@ -62,6 +63,7 @@
     border-radius: 15px;
     padding-left: 0.8rem;
     padding-top: 0.226667rem;
+    font-size: 0.426667rem;
 }
 #qMessageBox .qmain .qnav_news .qsearch input::-webkit-input-placeholder{
     font-size: 0.533333rem;
@@ -99,6 +101,9 @@
     top: 50%;
     transform:translateY(-50%);
 }
+#qMessageBox .qmain .qnav_news .qkf .qkf-r p{
+    margin-bottom: 0;
+}
 #qMessageBox .qmain .qnav_news .qkf .qkf-name{
     font-size: 0.56rem;
 }
@@ -126,6 +131,7 @@
     border-radius: 15px;
     padding-left: 0.8rem;
     padding-top: 0.226667rem;
+    font-size: 0.426667rem;
 }
 #qMessageBox .qmain .qnav_addlist .qsearch input::-webkit-input-placeholder{
     font-size: 0.533333rem;

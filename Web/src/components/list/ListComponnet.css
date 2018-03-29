@@ -179,7 +179,7 @@ body,html,#app{
     opacity: 0.5;
     position: absolute;
     left: 0;
-    bottom:1.133333rem;
+    bottom:1.4rem;
 }
 #qListBox .qmain .qmain_list ul li{
     border-bottom: 1px solid #ccc;

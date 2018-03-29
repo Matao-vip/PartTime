@@ -147,6 +147,9 @@ body,html{
     padding: 0.333333rem 0.266667rem;
     background: #fff;
 }
+#qDetailBox .qmain .qjz-lit,#qDetailBox .qmain .qjz-data,#qDetailBox .qmain .qjz-nr .qjz-nrp{
+    font-size: 0.426667rem;
+}
 #qDetailBox .qmain .qjz-data div{
     display: flex;
     margin: 0.2rem 0;
@@ -184,6 +187,11 @@ body,html{
     font-size: 0.2rem;
     color: #999;
 }
+#qDetailBox .qmain .qjz-like .qjz-likeh6{
+    font-size: 0.453333rem;
+    height:1.333333rem;
+    line-height: 1.333333rem;
+}
 #qDetailBox .qmain .qjz-like ul li{
     background: #fff;
 }
@@ -212,16 +220,18 @@ body,html{
     background: #0894ec;
 }
 #qDetailBox .qmain .qjz-like ul li .qlist .qlist_name{
-    font-size: 0.266667rem;
+    font-size: 0.426667rem;
     margin-top: 0.266667rem;
+    margin-bottom: 0.133333rem;
+
     color: #000;
 }   
 #qDetailBox .qmain .qjz-like ul li .qlist .qlist_time{
-    font-size: 0.16rem;
+    font-size: 0.373333rem;
     margin: 0.133333rem 0;
 }   
 #qDetailBox .qmain .qjz-like ul li .qlist .qmain_li_bot{
-    font-size: 0.266667rem;
+    font-size: 0.373333rem;
     margin-bottom: 0.266667rem;
     color: #fe7418;
 }

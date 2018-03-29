@@ -27,7 +27,6 @@ app.use(express.static(path.join(path.resolve(__dirname,'../'),'/')));
 module.exports={
     start(_port){
         // 在这里引用接口文件中的方法
-        example.reg(app);
         Marco.reg(app);
         ken.reg(app)
         qjy.reg(app);
