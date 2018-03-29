@@ -1,0 +1,29 @@
+.lcadd{
+	background: #00B38B;
+	color:#fff;
+	border:0;
+	margin-left: 8px;
+} 
+#lcmodaltable{
+	/* table-layout: fixed; */
+	.form-inline{position: absolute;left: 30px;top:50%;transform: translateY(-50%);}
+	.btn:hover{color:#00B38B;}
+	margin-top:5px;
+	td {
+		white-space: nowrap;
+		/* overflow:hidden;
+		text-overflow: ellipsis; */
+		word-wrap:break-word;
+		/* width:100px; */
+		/* display: inline-block; */
+		/* max-height: 70px; */
+	      /* white-space:nowrap;overflow:hidden;text-overflow: ellipsis; */
+		button{
+			background: #00B38B;
+			color:#fff;
+			border:0;
+			padding:3px 5px;
+		}	
+	}
+}
+

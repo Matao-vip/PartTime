@@ -20,5 +20,32 @@ export default{
                 }
             })
         })
+    },
+    post(url, params){
+        return new Promise((resolve, reject)=>{
+            http.post(filterUrl(url)).send(params || {}).type('form').end((error, res) => {
+                if(error){
+                    reject(error)
+                } else {
+                    resolve(res.body)
+                }
+            })
+        })
     }
+    // ,
+    // post(url, params){
+    //     return new Promise((resolve,reject)=>{
+    //         request
+    //         .post(filterUrl(url))
+    //         .send(params || {})
+    //         .type('form')
+    //         .end((err, res) => {
+    //             if(err){
+    //                 reject(err);
+    //             }else{
+    //                 resolve(res.body);
+    //             }
+    //         })
+    //     })
+    // }
 }

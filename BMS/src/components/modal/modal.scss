@@ -1,0 +1,19 @@
+.lcmodalmain{width:100%;height:100%;}
+.modal-content{box-shadow: 10px 10px 10px 0 #888;}
+.lcmask{position:absolute;top:0;bottom:0;left:0;right:0;background: #000;opacity: .3;}
+.modal-footer{
+	div{
+		margin: 0 auto;
+		.btn{
+			border:0;
+		}
+		.btn-primary{
+			background: #00B38B;
+			margin-left:20px;
+			&:hover{
+				background: #059573db;
+			}
+
+		}	
+	}
+}
