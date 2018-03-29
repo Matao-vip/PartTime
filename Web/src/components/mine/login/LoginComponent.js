@@ -71,6 +71,7 @@ class LoginComponent extends Component{
                 </ul>
                 <button className="submit" onClick={this.login.bind(this)}>登录</button>
                 <p className="vCodeLogin">验证码登录</p>
+                <div className="toHome"><Link to="/" className="locate">随便看看</Link></div>
                 <span className="hint locate" id="hint"></span>
             </div>
         )

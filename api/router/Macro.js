@@ -14,25 +14,12 @@ var upload=multer({ dest: uploadpath});
 
 module.exports={
     reg(app){
-        app.get('/Mcategory',(req,res)=>{
-            let page = req.query.page;
-            let qty = req.query.qty;
-            let startNo = (page-1)*qty;
-            var sql = `select SQL_CALC_FOUND_ROWS * from categorys `;
-            if(page && qty){
-                sql += `limit ${startNo},${qty}`;
-            }
-            sql += "; select FOUND_ROWS() as rowsCount;";
-            db.DBHelper.handle(sql,function(result){
-                res.send(apiResult(true,result));
-            })
-        })
         // 注册账户
         app.post('/Mreg',(req,res)=>{
             let username = req.body.username;
             let password = req.body.password;
             let pass_secret = crypto.createHash('md5').update(password).digest('hex');
-            var sql = `insert into users(username,password,headImg) values ('${username}','${pass_secret}',"temp/default.jpg")`;
+            var sql = `insert into users(username,password,headImg,nickname) values ('${username}','${pass_secret}',"temp/default.jpg",'喵${username}')`;
             db.DBHelper.handle(sql,(result)=>{
                 res.send(apiResult(true,result));
             })
@@ -67,26 +54,6 @@ module.exports={
             let sql = `select * from users where id=${id};`
             db.DBHelper.handle(sql,result=>{
                 res.send(apiResult(result.length>0,result));
-            })
-        })
-        // 多条件筛选
-        app.get('/Mgetwork',(req,res)=>{
-            let region = req.query.region;
-            let type = req.query.type;
-            let kind = req.query.kind;
-            var sql = "select SQL_CALC_FOUND_ROWS * from worksheet where 1=1";
-            if(region){
-                sql +=` and region='${region}'`
-            }
-            if(type){
-                sql +=` and type='${type}'`
-            }
-            if(kind){
-                sql +=` and kind='${kind}'`
-            }
-            sql += "; select FOUND_ROWS() as rowsCount;";
-            db.DBHelper.handle(sql,result=>{
-                res.send(apiResult(true,result))
             })
         })
         // 修改头像（文件上传）接口
@@ -150,6 +117,25 @@ module.exports={
             }else{
                 res.send(apiResult(false));
             }
+        })
+        // 修改密码判定
+        app.post('/vPsss',(req,res)=>{
+            let id = req.body.id;
+            let password = req.body.password;
+            let newpass = req.body.newpass;
+            password = crypto.createHash('md5').update(password).digest('hex');
+            newpass = crypto.createHash('md5').update(newpass).digest('hex');
+            var sql = `select * from users where id=${id} and password='${password}'`
+            db.DBHelper.handle(sql,result=>{
+                if(result.length>0){
+                    var sql2 = `update users set password='${newpass}' where id=${id}`
+                    db.DBHelper.handle(sql2,result2=>{
+                        res.send(apiResult(true));
+                    })
+                }else{
+                    res.send(apiResult(false));
+                }
+            })
         })
     }
 }

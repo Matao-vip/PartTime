@@ -10,6 +10,8 @@ import RegComponnet from '../components/mine/register/RegComponent'
 import LoginComponent from '../components/mine/login/LoginComponent'
 import BasemsgComponnet from '../components/mine/baseMsg/BasemsgComponent'
 import ApplyListComponnet from '../components/mine/applyList/applyListComponent'
+import MineMoreComponent from '../components/mine/mineMore/mineMoreComponent'
+import UpdatePassComponent from '../components/mine/mineMore/updatePass/UpdatePassComponent'
 
 
 import Video_Componnet from '../components/VideoList/Video_Componnet.js'
@@ -24,6 +26,9 @@ export default (
         <Route path="/detail" component = {DetailComponnet} />
         <Route path="/mine(/:id)" component = {MineComponnet}>
             <Route path="/mine/applyList(/:id)" component = {ApplyListComponnet} />
+            <Route path="/mine/mineMore(/:id)" component = {MineMoreComponent} >
+                <Route path="/mine/mineMore/updatePass(/:id)" component = {UpdatePassComponent} />
+            </Route>
         </Route>
         <Route path="/baseMsg(/:id)" component = {BasemsgComponnet} />
         <Route path="/reg" component = {RegComponnet} />

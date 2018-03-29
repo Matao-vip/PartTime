@@ -104,7 +104,7 @@ class MineComponnet extends Component{
                             <li><i className="fa fa-get-pocket fl"></i><span className="fl">我的社保</span><i className="right fr">&gt;</i></li>
                             <li><i className="fa fa-star-o fl"></i><span className="fl">兼职收藏</span><i className="right fr">&gt;</i></li>
                             <li><i className="fa fa-commenting-o fl"></i><span className="fl">意见反馈</span><i className="right fr">&gt;</i></li>
-                            <li><i className="fa fa-ellipsis-h fl"></i><span className="fl">更多</span><i className="right fr">&gt;</i></li>
+                            <li><Link to={'/mine/mineMore/'+this.props.params.id} className="clfix"><i className="fa fa-ellipsis-h fl"></i><span className="fl">更多</span><i className="right fr">&gt;</i></Link></li>
                         </ul>
                     </div>
                 </div>

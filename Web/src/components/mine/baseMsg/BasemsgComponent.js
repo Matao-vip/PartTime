@@ -5,13 +5,15 @@ import './baseMsg.scss'
 import http from '../../../utils/httpClient'
 import Spinner from '../../spinner/SpinnerComponent'
 import ChangeImgComponent from '../changeImg/ChangeImgComponent'
+import Region3Component from './region3/Region3Component'
 
 export default class BasemsgComponnet extends Component{
     state={
         dataset:{},
         baseUrl:http.baseUrl,
         showImg:false,
-        headImg:null
+        headImg:null,
+        showRegion:false,
     }
     componentWillMount(){
         let id = this.props.params.id;
@@ -65,10 +67,22 @@ export default class BasemsgComponnet extends Component{
     showImgComponent(){
         this.setState({showImg:true});
     }
+    showRegionComponent(){
+        this.setState({showRegion:true});
+    }
     hideImgComponent(e,data){
         this.setState({showImg:false});
         if(data){
             this.setState({headImg:data})
+        }
+    }
+    hideRegionComponent(e,msg){
+        this.setState({showRegion:false});
+        if(msg){
+            var newdataset = Object.assign({},this.state.dataset);
+            newdataset.region = msg;
+            this.setState({dataset:newdataset});
+            $('#Regions').val(msg);
         }
     }
     render(){
@@ -101,8 +115,8 @@ export default class BasemsgComponnet extends Component{
                         </li>
                         <li className="region">
                             <span className="fl">所在城市</span>
-                            <span className="fr">
-                                <input type="text" defaultValue={this.state.dataset.region}/>
+                            <span className="fr" onClick={this.showRegionComponent.bind(this)}>
+                                <input type="text" defaultValue={this.state.dataset.region} id="Regions"/>
                                 <i className="fa fa-angle-right"></i>
                             </span>
                         </li>
@@ -140,6 +154,7 @@ export default class BasemsgComponnet extends Component{
                     </ul>
                 </div>
                 <ChangeImgComponent showImg={this.state.showImg} hideImg={this.hideImgComponent.bind(this)} userid={this.props.params.id}/>
+                <Region3Component showRegion={this.state.showRegion} hideRegion={this.hideRegionComponent.bind(this)}></Region3Component>
             </div>
         )
     }

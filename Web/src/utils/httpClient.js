@@ -1,4 +1,5 @@
 import request from "superagent"
+import Router from 'react-router'
 
 let baseUrl = "http://10.3.136.57:1010/";
 
@@ -17,9 +18,8 @@ export default{
             .end((err,res)=>{
                 if(err){
                     reject(err);
-                }else if(!res.body.status && res.body.error == "unauthorized"){
-                    this.props.router.push('/login');
-                    return false;
+                }else if(!res.body.status && res.body.message == "unauthorized"){
+                    reject(err);
                 }else{
                     resolve(res.body);
                 }
@@ -37,7 +37,7 @@ export default{
             .end((err, res) => {
                 if(err){
                     reject(err);
-                }else if(!res.body.status && res.body.error == "unauthorized"){
+                }else if(!res.body.status && res.body.message == "unauthorized"){
                     this.props.router.push('/login');
                     return false;
                 }else{

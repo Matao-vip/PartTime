@@ -1,0 +1,21 @@
+#updatePass{
+    background: #eee;position: absolute;left: 0;top: 0;right: 0;bottom: 0;font-size:0.466667rem;
+    .update_header{
+        height: 1.333333rem;border-bottom:1px solid #999;background: #fff;display:flex;margin-bottom: 0.2rem;
+        i{width: 10%;text-align: center;line-height: 1.333333rem;font-size:0.5rem;color:#f60;}
+        h4{width: 80%;text-align: center;line-height: 1.333333rem;font-weight: normal;}
+    }
+    .update_body{
+        ul{
+            margin: 0.4rem 0;background: #fff;
+            li{
+                height: 1.173333rem;border-bottom:1px solid #ccc;font-size:33px;color:#666;padding: 0.213333rem 0.4rem;
+                label{display: block;width: 2.293333rem;float:left;height: 0.733333rem;line-height: 0.733333rem;}
+                input{display: block;border:0 none;height: 0.733333rem;float:left;width:4.0rem;font-size:33px;}
+            }
+        }
+    }
+    button.submit{display: block;margin: 0.533333rem;font-size:36px;text-align: center
+        ;line-height: 1.173333rem;width: 8.986667rem;color:#fff;background: #f60;border:0 none;border-radius:0.133333rem;}
+    span.hint{padding:0.266667rem;background: #333;border-radius:0.8rem;color:#fff;opacity:.8;display: none;}
+}

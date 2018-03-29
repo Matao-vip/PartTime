@@ -19,7 +19,10 @@ export default class ApplyListComponnet extends Component{
         if(this.props.params.id && window.sessionStorage.getItem('xxtoken')){
             this.setState({show:true});
             http.get('MgetApply',{username_id:this.props.params.id}).then(res=>{
-                this.setState({show:false,dataset:res.data.data,rowsCount:res.data.rowsCount})
+                this.setState({show:false});
+                if(res.status){
+                    this.setState({dataset:res.data.data,rowsCount:res.data.rowsCount})
+                }
             })
         }
     }

@@ -1,0 +1,31 @@
+#locate{
+    position: absolute;background: rgba(0,0,0,.7);top: 0;right: 0;bottom: 0;left: 0;
+    &>div{
+        background: #fff;position: absolute;bottom: 0;left: 0;width: 100%;
+        label{
+            display: block;
+            float: left;
+            font-size:0.4rem;
+            width: 15%;
+            text-align: center;
+            line-height: 1.2rem;
+        }
+        select{
+            float:right;
+            width:80%;
+            height: 1.2rem;
+            font-size:0.4rem;
+            option{font-size:0.2rem;position: absolute;left: 0;top: 0;}
+        }
+
+        button{
+            width: 50%;
+            height: 1.2rem;
+            background: #09f;
+            font-size:0.4rem;
+            float:left;
+            color:#FFF;
+            &.btn_no{background: #ccc;}
+        }
+    }
+}
