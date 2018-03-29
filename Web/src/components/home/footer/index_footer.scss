@@ -1,0 +1,25 @@
+#index_footer{
+    float:left;
+    width: 100%;
+
+    footer {
+        // float: left;
+        width: 100%;
+        padding: 0.266667rem 0;
+        background: #f7f7f8;
+        p {
+            text-align: center;
+            font-size:0.4rem;
+            line-height: 0.64rem;
+            margin-bottom:0.133333rem;
+            &.link {
+                line-height: 0.64rem;
+                color: #fe7418;
+                font-size: 0.426667rem;
+                a {
+                    color: #fe7418;
+                }
+            }   
+        }
+    }
+}

@@ -1,0 +1,28 @@
+#mineMore{
+    background: #eee;position: absolute;left: 0;top: 0;right: 0;bottom: 0;font-size:0.466667rem;
+    a{color:#000;}
+    .more_header{
+        height: 1.333333rem;border-bottom:1px solid #999;background: #fff;display:flex;margin-bottom: 0.2rem;
+        i{width: 10%;text-align: center;line-height: 1.333333rem;font-size:0.5rem;color:#f60;}
+        h4{width: 80%;text-align: center;line-height: 1.333333rem;font-weight: normal;}
+    }
+    .more_body{
+        background: #fff;margin-bottom: 0.266667rem;
+        ul li{
+            overflow: hidden;padding:0.266667rem 0.4rem;border-bottom:0.013333rem solid #bbb;
+            i{
+                height: 0.586667rem;line-height: 0.586667rem;margin-right: 0.333333rem;
+                &.right{font-style:normal;color:#666;margin: 0;}
+                &.fa-calendar-minus-o,&.fa-file-video-o{color:#58bc58;}
+                &.fa-key,&.fa-info-circle{color:#f60;}
+                &.fa-file-video-o,&.fa-code-fork{color:#fc0;}
+                &.fa-trash-o,&.fa-sliders{color:#fc6;}
+                &.fa-building-o{color:#520;}
+            }
+        }
+    }
+    .more_footer{
+        background: #fff;
+        a{display: block;height: 1.066667rem;line-height: 1.066667rem;text-align: center;color:#333;}
+    }
+}
