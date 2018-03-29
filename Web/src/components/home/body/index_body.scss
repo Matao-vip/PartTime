@@ -175,14 +175,14 @@
         &.list-block {
             font-size: 0.373333rem;
         }
-        ul {
+        .list-container {
 
             position: relative;
             background: #fff;
             border-top: 0.026667rem solid #e7e7e7;
             border-bottom: 0.026667rem solid #e7e7e7;
         }
-         li {
+         .LLi{
             padding: 0.373333rem 0.32rem 0.373333rem 1.6rem;
             border-bottom: 0.026667rem solid #f8f7f7;
             position: relative;

@@ -263,7 +263,7 @@ export default class Index_body extends React.Component{
                         {
                             this.state.dataset.map((item) => {
                                 return (
-                                    <li key={item.id}>
+                                    <li key={item.id} className="LLi">
                                         <Link to={`/detail/${item.id}`}>
                                             <i  className="type"  ref="t_i" >
                                                 {item.type}

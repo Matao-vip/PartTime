@@ -1,9 +1,5 @@
 {
   "presets": [
-<<<<<<< HEAD
-    ["es2015", { "modules": false }],
-=======
->>>>>>> e32ab1711a2a04e9bb1c065bd5070f827041bc91
     "react",
     "latest",
     "stage-2"

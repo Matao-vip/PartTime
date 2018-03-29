@@ -2,11 +2,16 @@ import React from 'react'
 import './search.scss'
 import { Link } from 'react-router'
 import http from '../../../utils/httpClient.js'
-import Navfooter from '../nav/index_nav.js'
+
+import FootComponent from '../../foot/FootComponent'
+
 import $ from 'jquery'
 export default class Index_search extends React.Component{
     state = {
             dataset:[]
+    }
+    componentDidMount(){
+        $("#searchbox .footer ul li").first().addClass('active');
     }
     searchStart(){
         var searchValue = this.refs.searchname.value;
@@ -99,7 +104,7 @@ export default class Index_search extends React.Component{
                             <span onClick={this.searchLL.bind(this)}>促销</span>
                         </div>
                   </div>
-                  <Navfooter />
+                  <FootComponent />
                 {this.props.children}
              </div>
         ) 
