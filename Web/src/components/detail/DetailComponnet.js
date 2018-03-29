@@ -14,10 +14,10 @@ export default class DetailComponnet extends React.Component{
         spinner: false
     }
     componentWillMount(){
-        this.state.spinner = true;
+        // this.state.spinner = true;
         http.get('qDetail',{id:this.props.router.params.id}).then(res => {
             this.setState({data: res.data[0]})
-            this.state.spinner = false;
+            // this.state.spinner = false;
         })
         http.get('qDetail_like',{}).then(res => {
             this.setState({like: res.data[0]})
@@ -25,23 +25,31 @@ export default class DetailComponnet extends React.Component{
     }
     applyNow(){
         var userid = window.sessionStorage.getItem('userID')
-        console.log(userid)
+        // console.log(userid)
         http.get('qApply',{workid:this.props.router.params.id,userid: userid}).then(res => {
-            var spinner = document.getElementsByClassName('spinner')[0];
+            var spinner = document.getElementsByClassName('qspinner')[0];
             spinner.style.display = 'block'
-            spinner.className = 'spinner animated fadeOut'
+            spinner.className = 'qspinner animated fadeOut'
         })
+    }
+    scNow(){
+        var spinner = document.getElementsByClassName('qsc')[0];
+            spinner.style.display = 'block'
+            spinner.className = 'qsc animated fadeOut'
     }
     render(){
         return (
             <div id="qDetailBox">
                 <spinner></spinner>
-                <div className="spinner">
+                <div className="qspinner">
                     <p>报名成功</p>
+                </div>
+                <div className="qsc">
+                    <p>收藏成功</p>
                 </div>
                 <header className="qheader">
                     <div className="qheader_l">
-                        <Link to="/list" className="back-detail" ></Link>
+                        <Link to="/list" className="qback-detail" ></Link>
                     </div>
                     <p>兼职详情</p>
                 </header>
@@ -131,7 +139,7 @@ export default class DetailComponnet extends React.Component{
                 </div>
                 <footer className="qfooter">
                     <ul>
-                        <li className="qcollect">
+                        <li className="qcollect" onClick={this.scNow.bind(this)}>
                             <i></i>
                             收藏
                         </li>

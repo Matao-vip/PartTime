@@ -5,7 +5,7 @@
 body,html{
     height: 100%;
 }
-#qDetailBox .spinner{
+#qDetailBox .qspinner{
     display: none;
     position: absolute;
     left: 50%;
@@ -15,7 +15,17 @@ body,html{
     font-size: 0.666667rem;
     line-height: 100%;
 }
-#qDetailBox .back-detail{
+#qDetailBox .qsc{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: #fe822f;
+    font-size: 0.666667rem;
+    line-height: 100%;
+}
+#qDetailBox .qback-detail{
     display:block;
     width: 1.066667rem;
     height: 1.066667rem;

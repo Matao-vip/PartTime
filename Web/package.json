@@ -50,6 +50,7 @@
     "react-pull-to-refresh": "^1.1.1",
     "react-pullload": "^1.1.0",
     "reactjs-iscroll": "^0.3.2",
-    "sass-loader": "^5.0.1"
+    "sass-loader": "^5.0.1",
+    "scrollload": "^3.2.1"
   }
 }

@@ -6,6 +6,8 @@ import spinner from '../spinner/SpinnerComponent.js'
 
 export default class ListComponnet extends React.Component{
     state = {
+        seleall: true,
+        loadadd: 7,
         data: [],
         total: 1,
         spinner: false,
@@ -18,11 +20,12 @@ export default class ListComponnet extends React.Component{
         type: ['调研','送餐员','促销','礼仪','安保','销售','服务员','临时工','校内','设计','文员','派单','模特','实习','家教','演出','客服','翻译','其他']
     }
     componentWillMount(){
-        this.state.spinner = true;
+        // this.state.spinner = true;
         http.get('qList',{}).then(res=>{
-            this.setState({data: res.data.data})
+            this.setState({data: res.data.data.slice(0, this.state.loadadd)})
             this.setState({total: res.data.rowsCount})
-            this.state.spinner = false;
+            // this.state.spinner = false;
+            this.changestyle()
         })
     }
     showItem(event){
@@ -50,12 +53,28 @@ export default class ListComponnet extends React.Component{
         this.setState({showsort:!this.state.showsort});
         this.setState({shade: !this.state.showsort}) 
     }
+    changestyle(){
+        var arrname = document.getElementsByClassName('qlist_name')
+            for(var i=0;i<arrname.length;i++){
+                arrname[i].style.fontSize = '35px';
+            }
+        var arrtime = document.getElementsByClassName('qlist_time')
+            for(var i=0;i<arrtime.length;i++){
+                arrtime[i].style.fontSize = '25px';
+        }
+        var arrbot = document.getElementsByClassName('qmain_li_bot')
+            for(var i=0;i<arrbot.length;i++){
+                arrbot[i].style.fontSize = '30px';
+        }
+    }
     seleArea(name){
         http.get('qSeleArea',{region:`"${name}"`}).then(res=>{
             this.setState({data: res.data.data})
             this.setState({total: res.data.rowsCount})
             this.setState({showarea:!this.state.showarea});
             this.setState({shade: false})
+            this.setState({seleall: false})
+            this.changestyle()
         })
     }
     seleType(name){
@@ -64,16 +83,20 @@ export default class ListComponnet extends React.Component{
             this.setState({total: res.data.rowsCount})
             this.setState({showtype:!this.state.showtype});
             this.setState({shade: false});
+            this.setState({seleall: false})
+            this.changestyle()
         })
     }
     seleAll(){
         http.get('qList',{}).then(res=>{
-            this.setState({data: res.data.data})
+            this.setState({data: res.data.data.slice(0,this.state.loadadd)})
             this.setState({total: res.data.rowsCount})
             this.setState({showarea:false});
             this.setState({showtype:false});
             this.setState({showsort:false});
             this.setState({shade: false})
+            this.setState({seleall: true})
+            this.changestyle()
         })
     }
     seleAsc(){
@@ -84,6 +107,8 @@ export default class ListComponnet extends React.Component{
             this.setState({showtype:false});
             this.setState({showsort:false});
             this.setState({shade: false})
+            this.setState({seleall: false})
+            this.changestyle()
         })
     }
     seleDesc(){
@@ -94,6 +119,8 @@ export default class ListComponnet extends React.Component{
             this.setState({showtype:false});
             this.setState({showsort:false});
             this.setState({shade: false})
+            this.setState({seleall: false})
+            this.changestyle()
         })
     }
     seleNew(){
@@ -104,12 +131,33 @@ export default class ListComponnet extends React.Component{
             this.setState({showtype:false});
             this.setState({showsort:false});
             this.setState({shade: false})
+            this.setState({seleall: false})
+            this.changestyle()
         })
     }
     selePx(){
         this.setState({selepx: !this.state.selepx})
-        console.log(this.state.selepx)
+        this.changestyle()
     }
+    lazyload(e){
+        console.log(e.target.children[0].offsetHeight-(e.target.offsetHeight+e.target.scrollTop))
+        if((e.target.children[0].offsetHeight-(e.target.offsetHeight+e.target.scrollTop))*1 <= 1 && (this.state.seleall == true)){  
+            this.refs.load.innerHTML = "加载中..."
+            var timer = setTimeout(()=>{
+                this.setState({loadadd:this.state.loadadd+3})
+                http.get('qlist',{}).then((res) => {
+                    this.setState({
+                        data: res.data.data.slice(0,this.state.loadadd)
+                    })
+                    if(this.state.data.length == res.data.data.length){
+                        this.refs.load.innerHTML = '没有更多了'
+                    }else{
+                        document.getElementsByClassName('qmain')[0].scrollTop -= 60;
+                    }
+                })
+            }, 500)   
+        }
+    } 
 
     render(){    
 
@@ -174,35 +222,30 @@ export default class ListComponnet extends React.Component{
                     {this.state.showtype ? type : null}
                     {this.state.showsort ? sort : null}                  
                 </div>
-                <div className="qmain">
+                <div className="qmain" onScroll={this.lazyload.bind(this)}>
                     <div className="qmain_list">
                         <ul>
                             {
                                 this.state.data.map(item => {
-                                    return  <Link to={{pathname:`/detail/${item.id}`}} key={Math.random()}  >
-                                                <li id={item.id} >
+                                    return  <li id={item.id} key={Math.random()*10+1} >
+                                                <Link to={{pathname:`/detail/${item.id}`}} >
                                                     <div className="qlist">
                                                         <i>{item.type}</i>
                                                         <p className="qlist_name">{item.name}</p>
                                                         <p className="qlist_time">{item.region} {item.worktime}</p>
-                                                        <div className="qmain_li_bot">{item.salary}元/{item.salaryunit}</div>
+                                                        <p className="qmain_li_bot">{item.salary}元/{item.salaryunit}</p>
                                                     </div>
-                                                </li>
-                                            </Link>
+                                                </Link>
+                                            </li>
                                 })
                             }
+                            <a ref='load' className="qload"></a>
                         </ul>
                         {this.state.shade ? shade :null}
                     </div>
                 </div>
                 <footer className="qfooter">
-                    <ul>
-                        <li><i></i>兼职猫</li>
-                        <li><i></i>全部兼职</li>
-                        <li><i></i>A猫学堂</li>
-                        <li><i></i>喵</li>
-                        <li><i></i>个人中心</li>
-                    </ul>
+
                 </footer>
             </div>
         )
