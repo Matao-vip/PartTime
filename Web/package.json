@@ -12,6 +12,7 @@
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-latest": "^6.0.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -35,23 +36,37 @@
     "redux-thunk": "^2.2.0",
     "sass-loader": "^5.0.1",
     "style-loader": "^0.16.1",
-    "superagent": "^3.5.2",
+    "superagent": "^3.8.2",
     "url-loader": "^0.5.8",
-    "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.0"
+    "webpack": "^2.7.0",
+    "webpack-dev-server": "^2.11.2"
   },
   "author": "PartTime",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
   "babel-preset-latest": "^6.24.1",
     "crypto": "^1.0.1",
     "antd": "^3.3.3",
+=======
+    "animate.css": "^3.6.1",
+    "axios": "^0.18.0",
+>>>>>>> 2ae63e821e12b7d05fbacf8805874af445ba6105
     "events": "^1.1.1",
     "flux": "^3.1.2",
     "gulp": "^3.9.1",
     "jsonwebtoken": "^8.2.0",
+<<<<<<< HEAD
     "jquery": "^3.3.1",
     "node": "^9.9.0",
     "sass-loader": "^6.0.7"
+=======
+    "node": "^9.9.0",
+    "react-pull-to-refresh": "^1.1.1",
+    "react-pullload": "^1.1.0",
+    "reactjs-iscroll": "^0.3.2",
+    "sass-loader": "^5.0.1",
+    "scrollload": "^3.2.1"
+>>>>>>> 2ae63e821e12b7d05fbacf8805874af445ba6105
   }
 }

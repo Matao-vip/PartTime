@@ -4,6 +4,7 @@ import {Route,Router,hashHistory, IndexRoute} from 'react-router'
 import HomeComponnet from '../components/home/HomeComponent.js'
 import ListComponnet from '../components/list/ListComponnet.js'
 import DetailComponnet from '../components/detail/DetailComponnet.js'
+<<<<<<< HEAD
 // Marco修改
 import MineComponnet from '../components/mine/MineComponent.js'
 import RegComponnet from '../components/mine/register/RegComponent'
@@ -12,6 +13,11 @@ import BasemsgComponnet from '../components/mine/baseMsg/BasemsgComponent'
 import ApplyListComponnet from '../components/mine/applyList/applyListComponent'
 import MineMoreComponent from '../components/mine/mineMore/mineMoreComponent'
 import UpdatePassComponent from '../components/mine/mineMore/updatePass/UpdatePassComponent'
+=======
+import LoginComponnet from '../components/login/LoginComponent.js'
+import MessageComponnet from '../components/message/MessageComponnet.js'
+
+>>>>>>> 2ae63e821e12b7d05fbacf8805874af445ba6105
 
 // ken修改
 import SearchComponnet from '../components/home/search/search.js'
@@ -25,6 +31,7 @@ export default (
         <Route path="/" component = {HomeComponnet}/>
         <Route path="/_search" component = {SearchComponnet}/>
         <Route path="/list" component = {ListComponnet} />
+<<<<<<< HEAD
         <Route path="/mine(/:id)" component = {MineComponnet}>
             <Route path="/mine/applyList(/:id)" component = {ApplyListComponnet} />
             <Route path="/mine/mineMore(/:id)" component = {MineMoreComponent} >
@@ -35,6 +42,11 @@ export default (
         <Route path="/reg" component = {RegComponnet} />
         <Route path="/login" component = {LoginComponent} />
         <Route path="/detail(/:id)" component = {DetailComponnet} />
+=======
+        <Route path="/detail/:id" component = {DetailComponnet} />
+        <Route path="/login" component = {LoginComponnet} />
+        <Route path="/message" component = {MessageComponnet} />
+>>>>>>> 2ae63e821e12b7d05fbacf8805874af445ba6105
         <Route path="/Video" component = {Video_Componnet} />
         <Route path="/Video_detail/:id" component = {Video_datailComponnet} />
     </Route>
