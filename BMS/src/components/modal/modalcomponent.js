@@ -26,6 +26,7 @@ class ModalComponent extends Component{
             }
         })
         window.alert('编辑成功');
+        document.getElementsByClassName('lclink')[0].style.background = '#00B38B'
         this.props.refresh(this.props.dataconfig)
         // 刷新指定表数据        
     }
@@ -60,6 +61,7 @@ class ModalComponent extends Component{
         // window.alert('往'+this.props.sql+'表添加一条数据成功！')
         this.showdown()
         window.alert('添加成功')
+        document.getElementsByClassName('lclink')[0].style.background = '#00B38B'
         this.props.refresh(this.props.dataconfig)
     }
     render(){

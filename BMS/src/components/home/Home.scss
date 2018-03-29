@@ -2,6 +2,15 @@
 .lcheader{width: 100%; height: 90px;background: #00B38B;position:relative;
 	border-bottom:3px solid #fff;
 	h3{text-align:center;line-height:90px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;font-family:sans-serif;}
+	.headimg{
+		display: inline-block;
+		margin: 8px 0 0 54px;
+		img{
+			width:70px;
+			height:70px;
+			border-radius: 50%;
+		}
+	}
 	.user{float:right;position: absolute;top:50%;transform:translateY(-50%);right:0;
 		color:#000;
 		h6{display:inline-block;}

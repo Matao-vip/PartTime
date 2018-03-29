@@ -29,6 +29,7 @@ class DatagridComponent extends Component{
 			})
 			window.alert('删除成功')
 			// 接下来就是刷新页面  记忆当前页面
+			document.getElementsByClassName('lclink')[0].style.background = '#00B38B'
 			this.props.refresh(this.props.config)
 		}else{
 			console.log('已取消操作')
@@ -98,6 +99,9 @@ class DatagridComponent extends Component{
 		pagebtns[0] = <li className="page-item" key='1'>
 					<a className="page-link lclink" onClick={this.goto.bind(this,1)} style={{'backgroundColor':'#00B38B'}}>1</a>
 				</li>
+		if(Math.ceil(this.props.rowscount/this.props.config.data.qty)==0){
+			pagebtns=[];
+		}
 		for(let i=2;i<=Math.ceil(this.props.rowscount/this.props.config.data.qty);i++){
 			pagebtns.push(
 				<li className="page-item" key={i}>
@@ -124,7 +128,7 @@ class DatagridComponent extends Component{
 				<table className="table table-bordered table-hover table-responsive" id="lcmodaltable">
 				    <thead>
 				        <tr>
-				        	<th key={Math.random()}>another</th>
+				        
 				        	{
 				        		this.getKeys(ds[0]).map((key, idx) => {
 				        			return <th key={idx}>{key}</th>
@@ -136,7 +140,7 @@ class DatagridComponent extends Component{
 				        {
 				        	ds.map((item) => {
 				        	    return (
-				        	        <tr key={item.id || item._id} onDoubleClick={this.selectTr.bind(this, item)} style={{'maxHeight': '70px'}}>
+				        	        <tr key={item.id || item._id} onDoubleClick={this.selectTr.bind(this, item)} style={{'maxHeight': '90px'}}>
 				        	            <td>
 				        	            	<button onClick={this.selectTr.bind(this, item)}>edit</button>&nbsp;  
 				        	            	<button onClick={this.del.bind(this,item)}>del</button>

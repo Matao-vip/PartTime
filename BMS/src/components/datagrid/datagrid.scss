@@ -6,6 +6,8 @@
 } 
 #lcmodaltable{
 	/* table-layout: fixed; */
+	text-align:center;
+	border-radius:3px;
 	.form-inline{position: absolute;left: 30px;top:50%;transform: translateY(-50%);}
 	.btn:hover{color:#00B38B;}
 	margin-top:5px;

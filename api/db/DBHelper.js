@@ -2,7 +2,7 @@ var mysql = require("mysql");
 
 // 创建连接池
 var pool = mysql.createPool({
-    host : 'localhost',
+    host : '10.3.136.25',
     user : 'root',
     password : '',
     port:3306,

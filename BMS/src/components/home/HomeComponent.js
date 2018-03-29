@@ -29,6 +29,20 @@ class HomeComponent extends React.Component{
             show: true
         })
     }
+    setbg(event){
+        let lis = document.getElementsByClassName('lcli')
+        for(var i=0;i<6;i++){
+            lis[i].style.background = '#797979'
+        }
+        event.target.style.background = '#00B38B'
+        let links = document.getElementsByClassName('lclink');
+        if(links[0]){
+            for(var i=0;i<links.length;i++){
+                links[i].style.background = '#fff'
+            }
+            links[0].style.background = '#00B38B'
+        }
+    }
     showdown(){
         this.setState({
             show: false
@@ -155,6 +169,10 @@ class HomeComponent extends React.Component{
                 cb: this.setcomfigmodal.bind(this)
             }
         },()=>{
+            let lis = document.getElementsByClassName('lcli')
+            for(var i=0;i<6;i++){
+                lis[i].style.background = '#797979'
+            }
             this.props.refresh(this.state.config)
         })
     }
@@ -177,6 +195,9 @@ class HomeComponent extends React.Component{
         <div>
             <div className="lcheader">
                 <h3>兼职喵后台管理</h3>
+                <div className="headimg">
+                    <img src="./src/img/default.jpg" alt=""/>
+                </div>
                 <div className="user">
                     <span>当前用户&nbsp;&nbsp;</span>
                     <h6>{window.sessionStorage.getItem('username')}</h6>
@@ -186,17 +207,16 @@ class HomeComponent extends React.Component{
             </div>
             <div className="lcbody">
                 <div className="lcnav">
-                    <ul>
-                        <li onClick={this.course.bind(this)}>课程管理(Coursesheet)</li>
-                        <li onClick={this.teacher.bind(this)}>讲师管理(Teachers)</li>
-                        <li onClick={this.worksheet.bind(this)}>工作职位管理(Worksheet)</li>
-                        <li onClick={this.applylist.bind(this)}>用户报名总览(Applylist)</li>
-                        <li onClick={this.users.bind(this)}>我的喵用户管理(Users)</li>
-                        <li onClick={this.administrator.bind(this)}>管理员权限(Administrator)</li>
+                    <ul onClick={this.setbg}>
+                        <li onClick={this.course.bind(this)} style={{'background':'#00B38B'}} className="lcli">课程管理(Coursesheet)</li>
+                        <li onClick={this.teacher.bind(this)} className="lcli">讲师管理(Teachers)</li>
+                        <li onClick={this.worksheet.bind(this)} className="lcli">工作职位管理(Worksheet)</li>
+                        <li onClick={this.applylist.bind(this)} className="lcli">用户报名总览(Applylist)</li>
+                        <li onClick={this.users.bind(this)} className="lcli">我的喵用户管理(Users)</li>
+                        <li onClick={this.administrator.bind(this)} className="lcli">管理员权限(Administrator)</li>
                     </ul>
                 </div>
                 <div className="lccontainer">
-
                     <div className="form-inline">
                         <select className="custom-select custom-select-4" ref='sels'>
                             <option>coursesheet</option>
