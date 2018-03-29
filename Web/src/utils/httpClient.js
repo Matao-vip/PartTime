@@ -1,6 +1,6 @@
 import request from "superagent"
 
-let baseUrl = "http://10.3.136.179:1010/";
+let baseUrl = "http://localhost:1010/";
 
 function filterUrl(url){
     return url.startsWith('http') ? url : baseUrl+url;

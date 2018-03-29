@@ -7,8 +7,8 @@ import LoginComponnet from '../components/login/LoginComponent.js'
 export default (
 
     <Route history = {hashHistory}>
-        <Route path="/login" component = {LoginComponnet} />,
-        <Route path="/" component = {HomeComponnet}>
+        <Route path="/" component = {LoginComponnet} />,
+        <Route path="/home" component = {HomeComponnet}>
         </Route>
     </Route>
 )
