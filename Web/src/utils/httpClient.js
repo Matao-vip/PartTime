@@ -1,7 +1,10 @@
 import request from "superagent"
 import Router from 'react-router'
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e32ab1711a2a04e9bb1c065bd5070f827041bc91
 let baseUrl = "http://localhost:1010/";
 
 function filterUrl(url){
