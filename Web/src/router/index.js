@@ -13,7 +13,8 @@ import ApplyListComponnet from '../components/mine/applyList/applyListComponent'
 import MineMoreComponent from '../components/mine/mineMore/mineMoreComponent'
 import UpdatePassComponent from '../components/mine/mineMore/updatePass/UpdatePassComponent'
 
-
+// ken修改
+import SearchComponnet from '../components/home/search/search.js'
 import Video_Componnet from '../components/VideoList/Video_Componnet.js'
 import Video_datailComponnet from '../components/VideoList/VideoDetail/Video_detailComponnet.js'
 
@@ -22,8 +23,8 @@ import Video_datailComponnet from '../components/VideoList/VideoDetail/Video_det
 export default (
     <Route history = {hashHistory}>
         <Route path="/" component = {HomeComponnet}/>
+        <Route path="/_search" component = {SearchComponnet}/>
         <Route path="/list" component = {ListComponnet} />
-        <Route path="/detail" component = {DetailComponnet} />
         <Route path="/mine(/:id)" component = {MineComponnet}>
             <Route path="/mine/applyList(/:id)" component = {ApplyListComponnet} />
             <Route path="/mine/mineMore(/:id)" component = {MineMoreComponent} >
@@ -33,6 +34,7 @@ export default (
         <Route path="/baseMsg(/:id)" component = {BasemsgComponnet} />
         <Route path="/reg" component = {RegComponnet} />
         <Route path="/login" component = {LoginComponent} />
+        <Route path="/detail(/:id)" component = {DetailComponnet} />
         <Route path="/Video" component = {Video_Componnet} />
         <Route path="/Video_detail/:id" component = {Video_datailComponnet} />
     </Route>

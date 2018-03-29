@@ -1,1 +1,56 @@
-#login{background: #f00;}
+body{background: #efefef;}
+body>div{width: 100%;height: 100%;}
+body .logining{width: 100%;height: 100%;}
+#adminlogin{
+    width: 100%;height: 100%;position: relative;
+    .superlogin{height: 50%;
+        // background:url(/src/assets/img/bg_login.jpg) repeat 0 0
+    }
+    .loginBox{
+        margin-top: -10px;
+        .logo{margin-left: 50%;transform:translate(-50%);}
+        h1{text-align: center;margin-bottom: 20px;color:#000;font-weight: normal;text-shadow:2px -2px 1px #00FFFF;}
+        .loginMain{
+            background: #fff;padding: 20px 40px;box-shadow:5px 6px 5px 0 #ccc;
+            table{
+                width: 400px;
+                margin:0 auto;
+                tr{
+                    height: 62px;
+                    td{
+                        input.txt{width: 250px;height: 37px;padding-left: 5px;}
+                        input.txt2{width: 130px;}
+                        span.yzm{width: 100px;height: 37px;line-height: 37px;text-align: center;background: #ccc;vertical-align: middle;margin-left: 20px;font-size:24px;color:#3b9;letter-spacing:6px;}
+                    }
+                    &.errortd{
+                        height: 20px;color:#f00;font-size:12px;line-height: 20px;display: none;
+                        i.ico-error{width: 18px;height: 17px;
+                            // background: url(/src/assets/img/ico_wrong.jpg) no-repeat 0 0;vertical-align: middle;margin-top: -4px;margin-right: 8px;
+                        }
+                    }
+                    &.opt{
+                        button{
+                            width: 100px;height: 40px;background: #00B38B;border:0 none;color:#fff;cursor:pointer;font-size:16px;border-radius:5px;
+                            &#btnreset{margin-left: 48px;background: #699;}
+                            &:hover{opacity:.8;}
+                        }
+                    }
+                    &.forget{
+                        height: 40px;
+                        a{
+                            margin-right: 64px;font-size:14px;cursor:pointer;
+                            &:hover{color:#f6c;}
+                        }
+                    }
+                }
+            }
+
+    .footer{
+        width: 400px;
+        margin:0 auto;
+        // position: absolute;bottom:50px;left: 50%;transform:translate(-50%);
+        color:#8f8f8f;
+        font-size: 14px;}
+        }
+    }
+}
