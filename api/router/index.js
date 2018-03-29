@@ -6,14 +6,9 @@ const bp = require('body-parser');
 const path = require('path');
 
 // 在这里引入自己接口的文件
-let example = require('./example')
 let Marco = require('./Macro.js')
-<<<<<<< HEAD
 let ken = require('./ken.js')
-
-=======
 let qjy = require('./qjy.js')
->>>>>>> 2ae63e821e12b7d05fbacf8805874af445ba6105
 
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -34,12 +29,8 @@ module.exports={
         // 在这里引用接口文件中的方法
         example.reg(app);
         Marco.reg(app);
-<<<<<<< HEAD
         ken.reg(app)
-=======
         qjy.reg(app);
-
->>>>>>> 2ae63e821e12b7d05fbacf8805874af445ba6105
         http.listen(_port || 1010);
     }
 }
