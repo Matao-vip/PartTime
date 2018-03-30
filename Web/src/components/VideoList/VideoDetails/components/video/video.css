@@ -1,0 +1,22 @@
+.m-console {
+    background-size: cover;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+}
+.m-console_inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.u-play_btn {
+    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -0.75rem 0 0 -0.75rem;
+}

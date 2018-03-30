@@ -1,0 +1,89 @@
+.m-course_info {
+    background: #fff;
+    margin-bottom: 0.25rem;
+    padding: 0.325rem 0.375rem;
+}
+.m-course_info h3 {
+    color: #3f3f3f;
+    font-size: 0.375rem;
+    padding-bottom: 0.05rem;
+    font-weight: 400;
+}
+.m-course_info p {
+    color: #9c9c9c;
+    font-size: 0.325rem;
+    padding-bottom: 0.15rem;
+    line-height: 140%;
+}
+.m-course_info h5 {
+    color: #4ebb70;
+    font-size: 0.425rem;
+    font-weight: 400;
+    position: relative;
+    margin: 0;
+}
+.m-teacher {
+    background: #fff;
+    min-height: 1.25rem;
+    padding: 0.25rem 0.375rem;
+}
+.m-teacher h3 {
+    color: #3f3f3f;
+    font-size: 0.375rem;
+    display: block;
+    padding-bottom: 0.375rem;
+}
+.m-teacher_cont {
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+}
+.teache_img {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.625rem;
+    overflow: hidden;
+    margin-right: 0.4rem;
+}
+.teache_img img {
+    width: 100%;
+}
+.teacher_info {
+    -webkit-box-flex: 1;
+    padding-right: 0.625rem;
+    background: url(../../../components/img/next.png) right center no-repeat;
+    background-size: 0.1625rem;
+}
+.teacher_info h4 {
+    color: #3f3f3f;
+    font-size: 0.375rem;
+    padding: 0.125rem 0;
+}
+.teacher_info p {
+    color: #9c9c9c;
+    font-size: 0.3rem;
+    text-align: left;
+    line-height: 140%;
+    height: 0.8rem;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.m-course_intro {
+    border-top: 1px solid #e6e6e6;
+    background: #fff;
+    margin-bottom: 0.25rem;
+    padding: 0.375rem 0 0;
+}
+.m-course_intro h3 {
+    color: #3f3f3f;
+    font-size: 0.375rem;
+    display: block;
+    padding: 0 0.375rem 0.375rem;
+}.m-course_intro img {
+    width: 100%;
+    display: block;
+}

@@ -52,7 +52,7 @@ export default class ApplyListComponnet extends Component{
                                         <div className="videoImg">
                                             <img src={item.videoImg} width="280" height="160"/>
                                         </div>
-                                        <div className="content">
+                                        <div className="Mcontent">
                                                 <div className="title">
                                                     <p>{item.videotitle}</p>
                                                 </div>

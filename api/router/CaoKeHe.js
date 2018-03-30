@@ -41,11 +41,9 @@ module.exports={
                 }else if(order == 1){
                     order = 'asc';
                 }
-                console.log(order)
                 sql += ` order by price ${order}`
             }
             sql += "; select FOUND_ROWS() as rowsCount;";
-            console.log(sql)
             db.DBHelper.handle(sql,result=>{
                 res.send(result)
             })
