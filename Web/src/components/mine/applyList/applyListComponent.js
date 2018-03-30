@@ -27,7 +27,6 @@ export default class ApplyListComponnet extends Component{
         }
     }
     goToBack(){
-        window.sessionStorage.removeItem('MarcoMsg');
         history.go(-1);
     }
     delApply(id){

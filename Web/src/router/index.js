@@ -12,6 +12,8 @@ import BasemsgComponnet from '../components/mine/baseMsg/BasemsgComponent'
 import ApplyListComponnet from '../components/mine/applyList/applyListComponent'
 import MineMoreComponent from '../components/mine/mineMore/mineMoreComponent'
 import UpdatePassComponent from '../components/mine/mineMore/updatePass/UpdatePassComponent'
+import MineAClassComponent from '../components/mine/mineAClass/mineAClassComponent'
+import CourseApplyListComponent from '../components/mine/mineAClass/courseApplyList/courseApplyListComponent'
 
 // qjy修改
 import MessageComponnet from '../components/message/MessageComponnet.js'
@@ -33,6 +35,9 @@ export default (
             <Route path="/mine/mineMore(/:id)" component = {MineMoreComponent} >
                 <Route path="/mine/mineMore/updatePass(/:id)" component = {UpdatePassComponent} />
             </Route>
+            <Route path="/mine/mineAclass(/:id)" component = {MineAClassComponent} >
+                <Route path="/mine/mineAclass/courseApply(/:id)" component = {CourseApplyListComponent} />
+            </Route>
         </Route>
         <Route path="/baseMsg(/:id)" component = {BasemsgComponnet} />
         <Route path="/reg" component = {RegComponnet} />
@@ -40,6 +45,6 @@ export default (
         <Route path="/detail(/:id)" component = {DetailComponnet} />
         <Route path="/message" component = {MessageComponnet} />
         <Route path="/Video" component = {Video_Componnet} />
-        <Route path="/Video_detail/:id" component = {Video_datailComponnet} />
+        <Route path="/Video_detail(/:id)" component = {Video_datailComponnet} />
     </Route>
 )

@@ -1,0 +1,39 @@
+#courseApplyList{
+    background: #eee;position: absolute;top: 0;right: 0;bottom: 0;left: 0;font-size:0.466667rem;display:flex;flex-direction:column;
+    .header{
+        height: 1.333333rem;border-bottom:1px solid #999;background: #fff;display:flex;margin-bottom: 0.2rem;
+        i{width: 10%;text-align: center;line-height: 1.333333rem;font-size:0.8rem;color:#f60;}
+        h4{width: 80%;text-align: center;line-height: 1.333333rem;font-weight: normal;}
+    }
+    h3.total{background: #fff;border-bottom: 1px solid #ccc;font-size:0.453333rem;font-weight: normal;height: 0.8rem;line-height: 0.8rem;padding-left: 0.133333rem;}
+    .main{flex:1;overflow: auto;}
+    .main ul{
+        margin-bottom: 0;
+        li{
+            border-bottom:1px solid #999;padding: 0.266667rem;background: #fff;
+            &>a{
+                height: 2.133333rem; display: flex;display: flex;
+                &>div.videoImg{margin-right: 0.133333rem;}
+                &>div.content{
+                    flex:1;display: flex;flex-direction:column;max-width:5.6rem;
+                    &>div{
+                        flex:1;font-size:0.373333rem;
+                        &.title p{margin:0;font-size:0.426667rem;overflow: hidden;text-overflow:ellipsis;white-space:nowrap;}
+                        &.price span{color:#58bc58;}
+                        &.other{
+                            color:#666;
+                            .applyNum i{margin-right: 0.066667rem;}
+                            .teacher span{max-width:2.666667rem;overflow: hidden;text-overflow:ellipsis;white-space:nowrap;}
+                        }
+                    }
+                }
+            }
+            &>div.opra{
+                height: 1.066667rem;margin-top: 0.266667rem;
+                span{
+                    height: 1.066667rem;line-height: 0.8rem;padding: 0.133333rem;border:1px solid #666;border-radius:0.133333rem;text-align: center;
+                }
+            }
+        }
+    }
+}

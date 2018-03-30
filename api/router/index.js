@@ -9,6 +9,7 @@ const path = require('path');
 let Marco = require('./Macro.js')
 let ken = require('./ken.js')
 let qjy = require('./qjy.js')
+let ckh = require('./CaoKeHe.js')
 
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -30,6 +31,7 @@ module.exports={
         Marco.reg(app);
         ken.reg(app)
         qjy.reg(app);
+        ckh.reg(app);
         http.listen(_port || 1010);
     }
 }

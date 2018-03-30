@@ -152,7 +152,6 @@ export default class ListComponnet extends React.Component{
         document.getElementsByClassName('qload')[0].innerHTML = ''
     }
     lazyload(e){
-        console.log(e.target.children[0].offsetHeight-(e.target.offsetHeight+e.target.scrollTop))
         if((e.target.children[0].offsetHeight-(e.target.offsetHeight+e.target.scrollTop))*1 <= -14 && (this.state.seleall == true)){  
             this.refs.load.innerHTML = "加载中..."
             var timer = setTimeout(()=>{
