@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route,Router,hashHistory} from 'react-router'
+import {Route,Router,hashHistory,Link} from 'react-router'
 import './index_header.scss'
 export default class Index_header extends React.Component{
     _search(){
@@ -18,7 +18,7 @@ export default class Index_header extends React.Component{
                         <input type="text" id="listSearch" placeholder="你好" onClick=
                         {this._search.bind(this)} />
                         </div>
-                        <a href="" className="icon icon-user"></a> 
+                        <Link to={'/mine/'+window.sessionStorage.getItem('userID')} className="icon icon-user"></Link> 
                     </header>
                     {this.props.children}
                 </div>

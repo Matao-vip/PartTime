@@ -99,7 +99,7 @@ class MineComponnet extends Component{
                     </div>
                     <div className="body3">
                         <ul>
-                            <li><i className="fa fa-graduation-cap fl"></i><span className="fl">A猫学堂</span><i className="right fr">&gt;</i></li>
+                            <li><Link to={'/mine/mineAclass/'+this.props.params.id} className="clfix"><i className="fa fa-graduation-cap fl"></i><span className="fl">A猫学堂</span><i className="right fr">&gt;</i></Link></li>
                             <li><i className="fa fa-address-book fl"></i><span className="fl">我的简历</span><i className="right fr">&gt;</i></li>
                             <li><i className="fa fa-get-pocket fl"></i><span className="fl">我的社保</span><i className="right fr">&gt;</i></li>
                             <li><i className="fa fa-star-o fl"></i><span className="fl">兼职收藏</span><i className="right fr">&gt;</i></li>

@@ -92,8 +92,13 @@ module.exports={
                         db.DBHelper.handle(sql2,result2=>{
                             if(result2.data){
                                 result2.data.forEach((item,idx)=>{
-                                    item['applytime'] = result.data[idx].applytime;
-                                    item['listId'] = result.data[idx].id;
+                                    for(var i=0;i<result.data.length;i++){
+                                        if(item.id == result.data[i].work_id){
+                                            item['applytime'] = result.data[i].applytime;
+                                            item['listId'] = result.data[i].id;
+                                            break;
+                                        }
+                                    }
                                 })
                             }
                             res.send(apiResult(true,result2));
@@ -136,6 +141,97 @@ module.exports={
                     res.send(apiResult(false));
                 }
             })
+        })
+
+
+        // 获取视频商品详情
+        app.get('/MgetCourse',(req,res)=>{
+            let id = req.query.id;
+            if(id){
+                var sql = `select * from coursesheet where id=${id}`
+                db.DBHelper.handle(sql,result=>{
+                    if(result.length>0){
+                        var teacher_id = result[0].teacher;
+                        var sql2 = `select * from teachers where id=${teacher_id}`
+                        db.DBHelper.handle(sql2,result2=>{
+                            result = result.concat(result2);
+                            res.send(apiResult(true,result));
+                        })
+                    }else{
+                        res.send(apiResult(false));
+                    }
+                })
+            }else{
+                res.send(apiResult(false));
+            }
+        })
+        // 获取教师详情
+        app.get('/MgetTeacher',(req,res)=>{
+            let id = req.query.id;
+            var sql = `select * from teachers where id=${id}`
+            db.DBHelper.handle(sql,result=>{
+                res.send(apiResult(true,result));
+            })
+        })
+        // 报名课程添加到课程报名表
+        app.post('/MaddCourse',filter,(req,res)=>{
+            let userid = req.body.userid;
+            let courseid = req.body.courseid;
+            if(userid,courseid){
+                var sql = `insert into courseApplyList(userid,courseid) values (${userid},${courseid})`;
+                db.DBHelper.handle(sql,result=>{
+                    res.send(apiResult(true,result));
+                })
+            }else{
+                res.send(apiResult(false,result));
+            }
+        })
+        // 获取课程列表
+        app.get('/MgetCourseApply',filter,(req,res)=>{
+            let userid = req.query.userid;
+            var sql = `select SQL_CALC_FOUND_ROWS * from courseApplyList`
+            if(userid){
+                sql += ` WHERE userid=${userid}`;
+                sql += "; select FOUND_ROWS() as rowsCount;";
+                db.DBHelper.handle(sql,result=>{
+                    if(result.data && result.data.length>0){
+                        var sql2 = 'select SQL_CALC_FOUND_ROWS * from coursesheet where 1=2'
+                        result.data.forEach(item=>{
+                            sql2 += ` or id=${item.courseid}`
+                        })
+                        sql2 += "; select FOUND_ROWS() as rowsCount;";
+                        db.DBHelper.handle(sql2,result2=>{
+                            if(result2.data){
+                                result2.data.forEach((item,idx)=>{
+                                    for(var i=0;i<result.data.length;i++){
+                                        if(item.id == result.data[i].courseid){
+                                            item['listId'] = result.data[i].id;
+                                            break;
+                                        }
+                                    }
+                                })
+                            }
+                            res.send(apiResult(true,result2));
+                        })
+                    }else{
+                        res.send(apiResult(false));
+                    }
+                })
+            }else{
+                res.send(apiResult(false));
+            }
+        })
+        // 取消报名
+        app.post('/MdelCourseApply',filter,(req,res)=>{
+            let id = req.body.id;
+            if(id){
+                var sql = `delete from courseApplyList where id=${id}`
+                db.DBHelper.handle(sql,result=>{
+                    res.send(apiResult(true,result));
+                })
+            }else{
+                res.send(apiResult(false));
+            }
         })
     }
 }

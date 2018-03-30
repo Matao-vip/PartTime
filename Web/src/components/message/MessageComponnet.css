@@ -1,0 +1,177 @@
+#qMessageBox{
+    background: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#qMessageBox .qheader{
+    position: relative;
+    background: #fe822f;
+    height: 1.333333rem;
+    line-height: 1.333333rem;
+}
+#qMessageBox .qheader p{
+    height: 1.066667rem;
+    text-align: center;
+    font-size: 0.6rem;
+    color: #fff;
+}   
+#qMessageBox .qheader i{
+    position: absolute;
+    right: 0.28rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 0.666667rem;
+    height: 0.666667rem;
+    background: url('./img/add.png') no-repeat;
+    background-size: cover;
+}
+#qMessageBox .qmain{
+    flex-grow: 1;
+}
+#qMessageBox .qnav{
+    display: flex;
+    height: 1.2rem;
+    justify-content: space-between;
+}
+#qMessageBox .qnav .qnews{
+    border-right: 1px solid #ccc;
+}
+#qMessageBox .qnav p{
+    /*flex-grow: 1;*/
+    width: 100%;
+    text-align: center;
+    font-size: 0.56rem;
+    line-height: 1.2rem;
+    background: #fff;
+    margin-bottom: 0;
+}
+#qMessageBox .qmain .qnav_news .qsearch{
+    position: relative;
+    background: #EEEEEE;
+    padding: 0 24px;
+    height: 1.333333rem;
+}
+#qMessageBox .qmain .qnav_news .qsearch input{
+    width: 95%;
+    height: 0.893333rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    padding-left: 0.8rem;
+    padding-top: 0.226667rem;
+    font-size: 0.426667rem;
+}
+#qMessageBox .qmain .qnav_news .qsearch input::-webkit-input-placeholder{
+    font-size: 0.533333rem;
+}
+#qMessageBox .qmain .qnav_news .qsearch i{
+    position: absolute;
+    top: 50%;
+    left: 0.453333rem;
+    transform:translateY(-50%);
+    background: url('./img/search_icon.png') no-repeat;
+    background-size: cover;
+    display:block;
+    width: 0.533333rem;
+    height: 0.533333rem;
+}
+#qMessageBox .qmain .qnav_news .qkf{
+    position: relative;
+    background: #fff;
+    padding-left: 1.866667rem;
+    height: 2.0rem;
+}
+#qMessageBox .qmain .qnav_news .qkf i{
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: pink;
+    position: absolute;
+    left: 0.266667rem;
+    top: 50%;
+    transform:translateY(-50%);
+}
+#qMessageBox .qmain .qnav_news .qkf .qkf-r{
+    position:absolute;
+    top: 50%;
+    transform:translateY(-50%);
+}
+#qMessageBox .qmain .qnav_news .qkf .qkf-r p{
+    margin-bottom: 0;
+}
+#qMessageBox .qmain .qnav_news .qkf .qkf-name{
+    font-size: 0.56rem;
+}
+#qMessageBox .qmain .qnav_news .qkf .qkf-nr{
+    font-size: 0.413333rem;
+    color: #888;
+}
+
+#qMessageBox .qmain .qnav_addlist{
+    display: none;
+}
+#qMessageBox .qmain .qnav_addlist .qsearch{
+    position: relative;
+    background: #EEEEEE;
+    padding: 0 24px;
+    height: 1.333333rem;
+}
+#qMessageBox .qmain .qnav_addlist .qsearch input{
+    width: 95%;
+    height: 0.893333rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    padding-left: 0.8rem;
+    padding-top: 0.226667rem;
+    font-size: 0.426667rem;
+}
+#qMessageBox .qmain .qnav_addlist .qsearch input::-webkit-input-placeholder{
+    font-size: 0.533333rem;
+}
+#qMessageBox .qmain .qnav_addlist .qsearch i{
+    position: absolute;
+    top: 50%;
+    left: 0.453333rem;
+    transform:translateY(-50%);
+    background: url('./img/search_icon.png') no-repeat;
+    background-size: cover;
+    display:block;
+    width: 0.533333rem;
+    height: 0.533333rem;
+}
+#qMessageBox .qmain .qnav_addlist .qfir{
+    position: relative;
+    background: #fff;
+    padding-left: 1.866667rem;
+    height: 2.0rem;
+}
+#qMessageBox .qmain .qnav_addlist .qfir i{
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: pink;
+    position: absolute;
+    left: 0.266667rem;
+    top: 50%;
+    transform:translateY(-50%);
+}
+#qMessageBox .qmain .qnav_addlist .qfir .qfir-r{
+    position:absolute;
+    top: 50%;
+    transform:translateY(-50%);
+}
+#qMessageBox .qmain .qnav_addlist .qfir .qfir-new{
+    font-size: 0.56rem;
+}
+#qMessageBox .qnav .active{
+    color: #fe822f;
+}
