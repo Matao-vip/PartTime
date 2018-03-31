@@ -22,7 +22,7 @@ export default class MineMoreComponent extends Component{
     }
     componentDidMount(){
         var id = this.props.params.id
-        if(id && id != "undefined"){
+        if(id && id != "undefined" && id !="null"){
             $(".more_footer a").text('退出当前帐号');
         }else{
             $(".more_footer a").text('登录帐号');

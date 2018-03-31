@@ -20,8 +20,11 @@ import MessageComponnet from '../components/message/MessageComponnet.js'
 
 // ken修改
 import SearchComponnet from '../components/home/search/search.js'
+
+// cao修改
 import Video_Componnet from '../components/VideoList/Video_Componnet.js'
 import Video_datailComponnet from '../components/VideoList/VideoDetail/Video_detailComponnet.js'
+import VideoDetails from '../components/VideoList/VideoDetails/VideoDetails.js'
 
 
 
@@ -46,5 +49,6 @@ export default (
         <Route path="/message" component = {MessageComponnet} />
         <Route path="/Video" component = {Video_Componnet} />
         <Route path="/Video_detail(/:id)" component = {Video_datailComponnet} />
+        <Route path="/videoDetails(/:id)" component = {VideoDetails} />
     </Route>
 )

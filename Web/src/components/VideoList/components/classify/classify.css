@@ -1,0 +1,35 @@
+.m-nav {
+    min-height: 1.1rem;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 0.025rem;
+}
+.m-nav_list {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.m-nav_list ul {
+    padding: 0.025rem 0;
+    background: #fff;
+    min-width: 100%;
+    height: 2.1rem;
+}
+.m-nav_list li {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    width: 2.375rem;
+}
+.m-nav_list li img {
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 0.5625rem;
+    display: inline-block;
+}
+.m-nav_list li span {
+    display: block;
+    text-align: center;
+    color: #646464;
+    font-size: 0.325rem;
+}

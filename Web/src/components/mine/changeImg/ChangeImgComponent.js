@@ -7,7 +7,7 @@ export default class ChangeImgComponent extends Component{
     uploadImg(e){
         var formData = new FormData($( "#uploadForm" )[0]);  
         $.ajax({  
-             url: 'http://localhost:1010/Muploadhead' ,  
+             url: 'http://10.3.136.9:1010/Muploadhead' ,  
              type: 'POST',  
              data: formData,  
              async: false,  

@@ -1,0 +1,108 @@
+.m-idx_double {
+    background: ##f3f3f3;
+    float: left;
+}
+.m-idx_double h2 {
+    padding: 0.5rem 0.25rem;
+    color: #3f3f3f;
+    font-size: 0.375rem;
+    font-weight: 700;
+}
+.m-idx_double h2 span {
+    width: 0.05rem;
+    background: #fe7418;
+    height: 0.4625rem;
+    position: relative;
+    top: 0;
+    margin-right: 0.1875rem;
+    float: left;
+}
+.m-double_list {
+    min-height: 3.0rem;
+    background: url(../img/nopic.png) center center no-repeat;
+    background-size: cover;
+    min-height: auto;
+
+}
+.m-double_list ul {
+    background: #fff;
+    padding: 0 0.125rem;
+    margin: 0.125rem;
+    float: left;
+}
+.m-double_list li {
+    margin-bottom: 0.375rem;
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 0.125rem;
+}
+.list_pic {
+    margin-bottom: 0.225rem;
+    position: relative;
+    overflow: hidden;
+    background: url(../img/nopic.png) center center no-repeat;
+    background-size: cover;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.list_pic img {
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.shadow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.5875rem;
+    background: url(../img/home_vide_bg.png) 0 0 repeat-x;
+    background-size: auto 0.5875rem;
+}
+.m-double_list .list_pic .teacher, .m-horizontal_list .list_pic .teacher {
+    right: 0.25rem;
+    bottom: 0;
+    height: 0.475rem;
+    line-height: 0.475rem;
+    padding-left: 0.4375rem;
+    background: url(../img/user.png) 0.125rem center no-repeat;
+    background-size: 0.25rem;
+    color: #fff;
+    font-size: 0.275rem;
+    text-shadow: 0 0.0125rem 0.0125rem #303134;
+    max-width: 2.6rem;
+}
+.m-double_list .list_pic span, .m-horizontal_list .list_pic span {
+    position: absolute;
+    display: block;
+}
+.m-double_list li h6 {
+    color: #3f3f3f;
+    font-size: 0.35rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    line-height: 120%;
+    margin-bottom: 0.125rem;
+    padding-left: 0.05rem;
+    margin-top: 0;
+    font-weight: 400;
+}
+.m-double_list li p {
+    color: #9c9c9c;
+    font-size: 0.325rem;
+    padding-left: 0.05rem;
+}
+.m-double_list li p .price{
+    color: #fe7418;
+    font-size: 0.3rem;
+}
+.m-idx_doubles {
+    margin-bottom: 0.25rem;
+    background: #fff;
+    float: left;
+}
