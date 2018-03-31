@@ -4,7 +4,7 @@ var mysql = require("mysql");
 var pool = mysql.createPool({
     host : '10.3.136.25',
     user : 'root',
-    password : '',
+    password : '6666',
     port:3306,
     database: 'react_test_db',
     multipleStatements:true,  // 允许执行多个SQL语句

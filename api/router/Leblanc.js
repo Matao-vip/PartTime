@@ -2,6 +2,13 @@ var db = require('../db')
 var apiResult = require('../utils/apiResult.js')
 var filter = require('../utils/filter.js')
 
+var multer = require ('multer');
+var path = require('path');
+var fs=require('fs');
+
+var _path = path.join(__dirname, "../uploadFile");
+const upload = multer({dest: _path});
+
 module.exports = {
 	reg(app){
         // 支持分页 {page:1,qty:6}
@@ -136,9 +143,7 @@ module.exports = {
             }  
             let str2 = arr2.toString();
             function insert(_sqlname){
-                let sql = `INSERT INTO ${sqlname} (${str1}) VALUES (${str2})`;
-                console.log(sql)
-                     
+                let sql = `INSERT INTO ${sqlname} (${str1}) VALUES (${str2})`;       
                 return sql;
             }  
             db.DBHelper.handle(insert(sqlname),function(result){
@@ -182,6 +187,41 @@ module.exports = {
             }) 
                  
         })
+
+        app.post('/keupload', upload.single('head'),(req, res)=>{    
+            fs.rename(req.file.path,_path+'/'+req.file.originalname);
+            res.send(req.file.originalname)
+                 
+        })
+
+        app.get('/keadmininfo',(req,res)=>{
+            let admin = req.query.admin
+            let sql = `select * from administrator where admin='${admin}'`;
+            db.DBHelper.handle(sql,function(result){
+                res.send(apiResult(true,result));
+            })
+        })
+
+        app.get('/keupdatehead',(req,res)=>{
+            let admin = req.query.admin;
+            let headpic = req.query.headpic;
+            let sql =  `UPDATE administrator SET headpic='${headpic}' WHERE admin='${admin}'`;
+            db.DBHelper.handle(sql,function(result){
+                res.send(apiResult(true,result));
+            })
+
+        })
+        // app.post('/upload', upload.single('headPic'), function (req, res) {
+        //     console.log(req.file);
+        //     /*将path重新命名(附带修改之后的名字)*/
+        //     fs.rename(req.file.path,path.join(_path,req.file.filename+'.'+req.file.originalname.split('.')[1]),(error)=>{
+        //         console.log(error)
+        //     })  
+        //     console.log(req.body);  
+        //     res.send(req.file);
+        // })
+
+    
 
 	}
 }

@@ -128,7 +128,6 @@ class DatagridComponent extends Component{
 				<table className="table table-bordered table-hover table-responsive" id="lcmodaltable">
 				    <thead>
 				        <tr>
-				        
 				        	{
 				        		this.getKeys(ds[0]).map((key, idx) => {
 				        			return <th key={idx}>{key}</th>
@@ -141,15 +140,15 @@ class DatagridComponent extends Component{
 				        	ds.map((item) => {
 				        	    return (
 				        	        <tr key={item.id || item._id} onDoubleClick={this.selectTr.bind(this, item)} style={{'maxHeight': '90px'}}>
-				        	            <td>
-				        	            	<button onClick={this.selectTr.bind(this, item)}>edit</button>&nbsp;  
-				        	            	<button onClick={this.del.bind(this,item)}>del</button>
-				        	            </td>
 				        	            {
 				        	                this.getKeys(item).map((key) => {
 				        	                    return <td key={Math.random()} style={{'overflow': 'hidden','height': '60px'}}>{item[key]}</td>
 				        	                })  
 				        	            }
+				        	            <td>
+				        	            	<button onClick={this.selectTr.bind(this, item)}>edit</button>&nbsp;  
+				        	            	<button onClick={this.del.bind(this,item)}>del</button>
+				        	            </td>
 				        	        </tr>
 				        	    )
 				        	})

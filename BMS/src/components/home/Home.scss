@@ -4,11 +4,19 @@
 	h3{text-align:center;line-height:90px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;font-family:sans-serif;}
 	.headimg{
 		display: inline-block;
+		// position: relative;
 		margin: 8px 0 0 54px;
 		img{
 			width:70px;
 			height:70px;
 			border-radius: 50%;
+		}
+		.headupload{
+			position: absolute;
+			top:50%;
+			left:150px;
+			transform:translateY(-50%)
+
 		}
 	}
 	.user{float:right;position: absolute;top:50%;transform:translateY(-50%);right:0;

@@ -5,7 +5,7 @@ import DatagridComponent from '../datagrid/datagridcomponent.js'
 import ModalComponent from '../modal/modalcomponent.js'
 import * as actions from '../datagrid/datagridaction.js'
 import {connect} from 'react-redux'
-
+import $ from '../../common/jquery-3.2.1.min.js'
 class HomeComponent extends React.Component{
     // model的状态
     state = {
@@ -21,7 +21,8 @@ class HomeComponent extends React.Component{
             data: []   
         },
         sql: 'coursesheet',
-        build: false
+        build: false,
+        headpic: '/uploadFile/default.jpg'
     }
     // 触发该事件显示modal
     showup(){
@@ -140,17 +141,13 @@ class HomeComponent extends React.Component{
     }
     add(){
         this.showup()
-        // let arr = Object.keys(this.props.dataset.dataset[0]);
-        // let obj = {};
-        // for(var i in arr){
-        //     obj[arr[i]] = ''
-        // }
         this.setState({
             build: true
         })
         let obj = this.props.dataset.dataset[0];
-        // obj.id = 'id自动生成 禁止输入!'
-        this.setcomfigmodal(obj)
+        let _obj = JSON.parse(JSON.stringify(obj))
+        _obj.id = 'id自动生成 禁止输入! 以下数据已默认填写~~'
+        this.setcomfigmodal(_obj)
     }
     setbuildstatus(){
         this.setState({
@@ -158,7 +155,7 @@ class HomeComponent extends React.Component{
         })
     }
     setpage(){
-        console.log(this.refs.setpage)
+        // console.log(this.refs.setpage)
     }
     search(){
         this.setState({
@@ -173,15 +170,33 @@ class HomeComponent extends React.Component{
             for(var i=0;i<6;i++){
                 lis[i].style.background = '#797979'
             }
+            lis[0].style.background = '#00B38B';
             this.props.refresh(this.state.config)
         })
     }
     componentWillMount(){
         if(window.sessionStorage.getItem('username')){
+            $.ajax({
+                url: 'http://10.3.136.25:1010/keadmininfo',
+                type: 'get',
+                data: {admin: window.sessionStorage.getItem('username')},
+                success: (res)=>{
+                    this.setState({
+                        headpic: res.data[0].headpic
+                    },()=>{
+                    })
+                }
+            })
             
         }else{
             this.props.router.push('/login')
         }
+    }
+    componentDidUpdate(){
+        // if(this.props.rowscount==0){
+        //     console.log(33)
+        //     document.getElementsByClassName('lcdatagrid')[0].innerHTML = `<h3 style="text-align:center;margin-top:100px;">查无此字段，请换个关键字吧！</h3>`
+        // }
     }
     quit(){
         window.sessionStorage.removeItem('username');
@@ -190,13 +205,53 @@ class HomeComponent extends React.Component{
             window.location.reload() 
         }
     }
+    upload(){
+        document.getElementsByClassName('upload')[0].click();
+        $($('.headupload')[0]).show()
+    }
+    uploadpic(){
+        var formData = new FormData($( "#uploadform" )[0]);  
+        console.log(formData)
+        $.ajax({  
+             url: 'http://10.3.136.25:1010/keupload',  
+             type: 'POST',  
+             data: formData,  
+             async: false,  
+             cache: false,  
+             contentType: false,  
+             processData: false, 
+             success: (res)=>{  
+                console.log(res)
+                alert('头像上传成功')
+                $($('.headupload')[0]).hide();
+                this.setState({
+                    headpic: '/uploadFile/'+res
+                },()=>{
+                    $.ajax({
+                        url: 'http://10.3.136.25:1010/keupdatehead',
+                        data: {admin: window.sessionStorage.getItem('username'),headpic: this.state.headpic},
+                        success: (res)=>{
+                            console.log(res)
+                        }
+                    })
+                })
+                // 修改数据库
+             }
+        })
+        
+        
+    }
     render(){
         let html = 
         <div>
             <div className="lcheader">
                 <h3>兼职喵后台管理</h3>
                 <div className="headimg">
-                    <img src="./src/img/default.jpg" alt=""/>
+                    <form id='uploadform' style={{'display': 'none'}}>  
+                        <input type="file" name="head" style={{'display': 'none'}} className="upload"/>  
+                    </form>
+                    <img src={'http://10.3.136.25:1010'+this.state.headpic=='http://10.3.136.25:1010/' ? '' : 'http://10.3.136.25:1010'+this.state.headpic} alt="" onClick={this.upload}/>
+                    <button className='headupload' onClick={this.uploadpic.bind(this)} style={{'display': 'none'}}>上传头像</button>
                 </div>
                 <div className="user">
                     <span>当前用户&nbsp;&nbsp;</span>
