@@ -49,7 +49,7 @@ export default class ApplyListComponnet extends Component{
                             this.state.dataset.map((item,idx)=>{
                                 return <li key={item.listId} id={item.listId}>
                                     <div className="type"><i className="type">{item.type}</i></div>
-                                    <div className="content">
+                                    <div className="Mcontent">
                                         <Link to={'/detail/'+item.id}>
                                             <div className="title"><p>{item.name}</p></div>
                                             <div className="other">
